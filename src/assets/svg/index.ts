@@ -1,0 +1,17 @@
+export { default as DriversLicenseSvg } from './DriversLicenseSvg'
+export { default as NationalIdSvg } from './NationalIdSvg'
+export { default as PassportSvg } from './PassportSvg'
+
+
+export { default as HomeSvg } from './HomeSvg'
+export { default as PatientRecordSvg } from './PatientRecordSvg'
+export { default as PrescriptionSvg } from './PrescriptionSvg'
+export { default as AgendaSvg } from './AgendaSvg'
+export { default as MedicalDocSvg } from './MedicalDocSvg'
+export { default as LaboratorySvg } from './LaboratorySvg'
+export { default as InsuranceSvg } from './InsuranceSvg'
+export { default as BillingSvg } from './BillingSvg'
+export { default as DentalChartSvg } from './DentalChartSvg'
+export { default as PrivacySvg } from './PrivacySvg'
+export { default as ConsultationsManagementSvg } from './ConsultationsManagementSvg'
+export { default as MemoSvg } from './MemoSvg'

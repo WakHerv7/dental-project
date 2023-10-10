@@ -1,0 +1,20 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "singleMenuItem": "Élément de menu unique",
+        "collapseMenu": {
+            "collapseMenu": "Collapse menu item",
+            "item1": "Collapse menu item 1",
+            "item2": "Collapse menu item 2"
+        },
+        "groupMenu": {
+            "groupMenu": "Menu de groupe",
+            "single": "Élément de menu unique de groupe",
+            "collapse": {
+                "collapse": "Group collapse menu",
+                "item1": "Group collapse menu item 1",
+                "item2": "Group collapse menu item 2"
+            }
+        }
+    }
+}
