@@ -117,9 +117,9 @@ const Agenda = () => {
         <div className="h-full w-full">
             <div className="flex md:flex-col xl:flex-row gap-4">
                 <div className="flex flex-col gap-4">
-                    <div className="xl:w-[300px]">
+                    <div className="xl:w-[380px]">
                         <Schedule data={dashboardData?.scheduleData} />
-                        <Activities data={dashboardData?.activitiesData} />
+                        {/* <Activities data={dashboardData?.activitiesData} /> */}
                     </div>
                 </div>
                 <div className="flex flex-col gap-4 flex-auto">
