@@ -2,7 +2,7 @@ import { LayoutType } from './theme'
 import type { LazyExoticComponent, ReactNode } from 'react'
 
 export interface Meta {
-    pageContainerType?: 'default' | 'gutterless' | 'contained'
+    pageContainerType?: 'default' | 'gutterless' | 'contained' | 'nael-gutter'
     header?: string | ReactNode
     headerContainer?: boolean
     extraHeader?: LazyExoticComponent<() => JSX.Element>

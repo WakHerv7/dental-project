@@ -13,7 +13,7 @@ const naelRoute: Routes = [
     {
         key: 'agenda.dashboard',
         path: `${APP_PREFIX_PATH}/agenda/dashboard`,
-        component: lazy(() => import('@/views/pages/FeatureInDevelopment')),
+        component: lazy(() => import('@/views/pages/Agenda')),
         authority: [ADMIN, USER],
     },
 

@@ -27,7 +27,7 @@ const CustomHeader = <T extends ElementType>({
 
 const PageContainer = (props: PageContainerProps) => {
     const {
-        pageContainerType = 'default',
+        pageContainerType = 'nael-gutter',
         children,
         header,
         contained = false,
@@ -43,6 +43,7 @@ const PageContainer = (props: PageContainerProps) => {
                         'page-container relative h-full flex flex-auto flex-col',
                         pageContainerType !== 'gutterless' &&
                             `${PAGE_CONTAINER_GUTTER_X} ${PAGE_CONTAINER_GUTTER_Y}`,
+                        pageContainerType == 'nael-gutter' && 'md:px-4',
                         pageContainerType === 'contained' && 'container mx-auto'
                     )}
                 >
