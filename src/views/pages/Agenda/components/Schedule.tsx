@@ -4,17 +4,13 @@ import Card from '@/components/ui/Card';
 import Calendar from '@/components/ui/Calendar';
 import Badge from '@/components/ui/Badge';
 import useThemeClass from '@/utils/hooks/useThemeClass';
-import { HiVideoCamera, HiDocumentText, HiChatAlt2 } from 'react-icons/hi';
 import Button from '@/components/ui/Button';
-import { Field, FieldArray, Form, Formik, getIn } from 'formik';
 import { FormItem, FormContainer } from '@/components/ui/Form';
 import Select from '@/components/ui/Select';
-import { HiDotsVertical } from 'react-icons/hi';
-import Dropdown from '@/components/ui/Dropdown';
-import type { SyntheticEvent } from 'react';
-import Avatar from '@/components/ui/Avatar';
-import PriorityTag from '@/components/shared/PriorityTag';
 import Tag from '@/components/ui/Tag'
+import WaitingList from './WaitingList';
+import OngoingTasks from './OngoingTasks';
+import WaitingRoom from './WaitingRoom';
 
 type ScheduleProps = {
     data?: {
@@ -26,88 +22,6 @@ type ScheduleProps = {
     }[]
 }
 
-const scheduleData = [
-    {
-        id: '0',
-        time: '10:00am',
-        eventName: 'Louise Martin',
-        desciption: '04 Sept. 2023',
-        type: 'meeting',
-        status: 0,
-        delay: 4,
-    },
-    {
-        id: '1',
-        time: '1:00pm',
-        eventName: 'Leo Petit',
-        desciption: '04 Sept. 2023',
-        type: 'meeting',
-        status: 0,
-        delay: 4,
-    },
-    {
-        id: '2',
-        time: '3:00pm',
-        eventName: 'Alice Bernard',
-        desciption: '04 Sept. 2023',
-        type: 'task',
-        status: 2,
-        delay: 4,
-    },
-    {
-        id: '3',
-        time: '4:00pm',
-        eventName: 'Raphael Petit',
-        desciption: '04 Sept. 2023',
-        type: 'workshop',
-        status: 2,
-        delay: 4,
-    },
-];
-
-// ******************************************************************
-
-const dropdownItems = [
-    { key: 'a', name: 'Reprogrammer' },
-    { key: 'b', name: 'Supprimer' },
-]
-
-const onDropdownItemClick = (eventKey: string, e: SyntheticEvent) => {
-    console.log('Dropdown Item Clicked', eventKey, e)
-}
-
-const onDropdownClick = (e: SyntheticEvent) => {
-    console.log('Dropdown Clicked', e)
-}
-
-// ******************************************************************
-
-const statusColor: Record<
-    number,
-    {
-        label: string
-        dotClass: string
-        textClass: string
-    }
-> = {
-    0: {
-        label: 'Priorité haute',
-        dotClass: 'bg-emerald-100 dark:bg-emerald-500/20 dark:text-emerald-100',
-        textClass: 'text-emerald-600 dark:text-emerald-400',
-    },
-    1: {
-        label: 'Priorité moyenne',
-        dotClass: 'bg-amber-100 dark:bg-amber-500/20 dark:text-amber-100',
-        textClass: 'text-amber-600 dark:text-amber-500',
-    },
-    2: { label: 'Priorité faible', 
-        dotClass: 'bg-red-100 dark:bg-red-500/20 dark:text-red-100', 
-        textClass: 'text-red-600 dark:text-red-500'
-    },
-}
-
-// ******************************************************************
-
 const isToday = (someDate: Date) => {
     const today = new Date()
     return (
@@ -115,49 +29,6 @@ const isToday = (someDate: Date) => {
         someDate.getMonth() === today.getMonth() &&
         someDate.getFullYear() === today.getFullYear()
     )
-}
-
-const EventIcon = ({ type }: { type: string }) => {
-    const baseClass =
-        'rounded-lg h-10 w-10 text-lg flex items-center justify-center'
-
-    switch (type) {
-        case 'meeting':
-            return (
-                <div
-                    className={classNames(
-                        baseClass,
-                        'text-indigo-600 bg-indigo-100 dark:text-indigo-100 dark:bg-indigo-500/20'
-                    )}
-                >
-                    <HiVideoCamera />
-                </div>
-            )
-        case 'task':
-            return (
-                <div
-                    className={classNames(
-                        baseClass,
-                        'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-100'
-                    )}
-                >
-                    <HiDocumentText />
-                </div>
-            )
-        case 'workshop':
-            return (
-                <div
-                    className={classNames(
-                        baseClass,
-                        'text-amber-600 bg-amber-100 dark:text-amber-100 dark:bg-amber-500/20'
-                    )}
-                >
-                    <HiChatAlt2 />
-                </div>
-            )
-        default:
-            return null
-    }
 }
 
 const Schedule = ({ data = [] }: ScheduleProps) => {
@@ -247,134 +118,13 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
             </div>
 
             <hr className="my-6" />
-
-            {/* <h5 className="mb-4"></h5> */}
-            <div className="flex items-center justify-between mb-6">
-                
-                <div className="flex items-center gap-2">
-                    <h4>Liste d'attente</h4>
-                    <Tag                    
-                        className={classNames(
-                            'font-bold border-0',
-                            'text-white',
-                            'bg-amber-500',
-                            'h-fit'
-                            
-                        )}
-                    >
-                        <span>
-                            5
-                        </span>
-                    </Tag>
-                </div>
-                <Select
-                    placeholder="Categorie"
-                    options={[
-                        { value: '1', label: 'A reporter'},
-                        { value: '2', label: 'Validées'},
-                    ]}
-                ></Select>
-            </div>
-            {scheduleData.map((event) => (
-                <div
-                    key={event.id}
-                    className="flex items-center justify-between rounded-md mb-2 p-2 hover:bg-gray-50 dark:hover:bg-gray-600/40 cursor-pointer user-select"
-                >
-                    <div className="flex items-center gap-3">
-                        {/* <EventIcon type={event.type} /> */}
-                        <Avatar
-                            size={30}
-                            src="/img/avatars/thumb-1.jpg"
-                            shape="circle"
-                        />
-                        <div>
-                            <h6 className="text-sm font-bold">
-                                {event.eventName}
-                            </h6>
-                            <p className='text-xs'>RDV manqué: {event.desciption}</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <div className="flex items-center">
-                                {/* <Badge className={statusColor[event.status].dotClass}>
-                                <span
-                                    className={`ml-2 rtl:mr-2 capitalize font-semibold ${statusColor[event.status].textClass}`}
-                                >
-                                    {statusColor[event.status].label}
-                                </span>
-                                </Badge> */}
-                                <PriorityTag 
-                                label={statusColor[event.status].label}
-                                bgColor={statusColor[event.status].dotClass}
-                                textColor={statusColor[event.status].textClass} 
-                                />
-                                
-                            </div>
-                            <div className='text-xs'>
-                                Attente: {event.delay} jours
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div className="flex flex-col text-xs ml-3">
-                        <span>{event.time}</span>
-                    </div>
-                    <Dropdown 
-                    renderTitle={
-                        <HiDotsVertical />
-                    }
-                    menuClass="p-0 min-w-[100px] "
-                    onClick={onDropdownClick}>
-                        {dropdownItems.map((item) => (
-                            <Dropdown.Item
-                                key={item.key}
-                                eventKey={item.key}
-                                onSelect={onDropdownItemClick}
-                            >
-                                <span className="text-black">
-                                {item.name}
-                                </span>
-                            </Dropdown.Item>
-                        ))}
-                    </Dropdown>
-                    
-                </div>
-            ))}
+            <WaitingList/>
 
             <hr className="my-6" />
-            
-            <div>
-                <div className="flex items-center gap-2">
-                    <h4 className="my-3">Taches en cours</h4>
-                    <Tag                    
-                        className={classNames(
-                            'font-bold border-0',
-                            'text-white',
-                            'bg-amber-500',
-                            'h-fit'
-                            
-                        )}
-                    >
-                        <span>
-                            5
-                        </span>
-                    </Tag>
-                </div>
-                
-                <div className="flex flex-col gap-3">
-                    <Button variant="solid">Nouvelle tache</Button>
-                    <Button variant="twoTone">Voir toutes les taches</Button>
-                </div> 
-            </div>
+            <OngoingTasks/>
 
             <hr className="my-6" />
-            
-            <div>
-                <h4 className="my-3">Salle d'attente</h4>
-                <div className="flex flex-col gap-3">
-                    <Button variant="solid">Ajouter un patient en la salle d'attente</Button>
-                    <Button variant="twoTone">Voir la liste des patients en la salle d'attente</Button>
-                </div> 
-            </div>
+            <WaitingRoom/>
 
         </Card>
     )

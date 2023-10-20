@@ -118,6 +118,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         }
         return getBtnColor(btn)
     }
+    
 
     const twoToneColor = () => {
         const btn = {
@@ -222,7 +223,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         if (icon && children && !loading) {
             return (
                 <span className="flex items-center justify-center">
-                    <span className="text-lg">{icon}</span>
+                    <span className={`text-lg ${solidColor()} text-white rounded-[5px] p-[2px]`}>
+                        {icon}
+                    </span>
                     <span className="ltr:ml-1 rtl:mr-1">{children}</span>
                 </span>
             )
