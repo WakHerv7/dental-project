@@ -9,6 +9,7 @@ import { HiDotsVertical } from 'react-icons/hi';
 import Dropdown from '@/components/ui/Dropdown';
 import BirthdayModal from "../modals/BirthdayModal";
 import RdvDetailsModal from "../modals/RdvDetailsModal";
+import ReprogramAppointmentModal from "../modals/ReprogramAppointmentModal";
 
 
 const scheduleData = [
@@ -53,6 +54,8 @@ const scheduleData = [
 const WaitingList = () => {    
     const [birthdayDialogIsOpen, setBirthdayDialogIsOpen] = useState(Array(scheduleData.length).fill(false));
     const [rdvDetailsDialogIsOpen, setRdvDetailsDialogIsOpen] = useState(Array(scheduleData.length).fill(false));
+    const [reprogramDialogIsOpen, setReprogramDialogIsOpen] = useState(Array(scheduleData.length).fill(false));
+    
     // *********************************************************
     const dropdownItems = [
         { key: 'a', name: 'Reprogrammer' },
@@ -103,6 +106,12 @@ const WaitingList = () => {
         updatedDialogIsOpen[index] = true;
         setRdvDetailsDialogIsOpen(updatedDialogIsOpen);
     };
+    const openReprogramModal = (index: number) => {
+        const updatedDialogIsOpen = [...reprogramDialogIsOpen];
+        updatedDialogIsOpen[index] = true;
+        setReprogramDialogIsOpen(updatedDialogIsOpen);
+    };
+    
 
     const nameToEmail = (name:string) => {
         const lowercaseName = name.toLowerCase();
@@ -227,18 +236,32 @@ const WaitingList = () => {
                 }
                 menuClass="p-0 min-w-[100px] "
                 onClick={onDropdownClick}>
-                    {dropdownItems.map((item) => (
+                    {dropdownItems.map((item, dindex) => (
                         <Dropdown.Item
                             key={item.key}
                             eventKey={item.key}
                             onSelect={onDropdownItemClick}
                         >
+                            {dindex===0 ?
+                            <span className="text-black" onClick={()=>openReprogramModal(index)}>
+                            {item.name}
+                            </span>
+                            :
                             <span className="text-black">
                             {item.name}
                             </span>
+                            }
                         </Dropdown.Item>
                     ))}
                 </Dropdown>
+                <ReprogramAppointmentModal
+                    dialogIsOpen={reprogramDialogIsOpen[index]}
+                    setIsOpen={(isOpen) => {
+                    const updatedDialogIsOpen = [...reprogramDialogIsOpen];
+                    updatedDialogIsOpen[index] = isOpen;
+                    setReprogramDialogIsOpen(updatedDialogIsOpen);
+                    }}
+                />
                 
             </div>
         ))}
