@@ -118,7 +118,8 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         labelDisabledClass,
         className,
         `${'inline-flex'}`,
-        `${radioGutter ? 'm' + (vertical ? 'b-' : 'r-') + radioGutter : ''}`
+        `${radioGutter ? 'm' + (vertical ? 'b-' : 'r-') + radioGutter : ''}`,
+        
     )
 
     return (
@@ -139,7 +140,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
             {children ? (
                 <span
                     className={classNames(
-                        'ltr:ml-2 rtl:mr-2',
+                        'ltr:ml-2 rtl:mr-2 flex gap-3',
                         disabled ? 'opacity-50' : ''
                     )}
                 >

@@ -26,6 +26,12 @@ type SearchResult = {
     data: SearchData[]
 }
 
+type ModalProps = {
+    searchDialogOpen: boolean,
+    setSearchDialogOpen: (value:boolean) => void,
+    // className?: string,
+}
+
 const recommendedSearch: SearchResult[] = [
     // {
     //     title: 'Recommended',
@@ -104,8 +110,8 @@ const ListItem = (props: {
     )
 }
 
-const _Search = ({ className }: { className?: string }) => {
-    const [searchDialogOpen, setSearchDialogOpen] = useState(false)
+const AddPatientModal = ({ searchDialogOpen, setSearchDialogOpen}:ModalProps) => {
+    // const [searchDialogOpen, setSearchDialogOpen] = useState(false)
     const [searchResult, setSearchResult] =
         useState<SearchResult[]>(recommendedSearch)
         // useState<SearchResult[]>(recommendedSearch)
@@ -170,12 +176,12 @@ const _Search = ({ className }: { className?: string }) => {
 
     return (
         <>
-            <div
+            {/* <div
                 onClick={handleSearchOpen}
             >
-                {/* <HiOutlineSearch /> */}
-                <Button variant="solid" className='w-full'>Ajouter un patient en salle d'attente</Button>                
-            </div>
+                <Button variant="solid" className='w-full'>
+                    Ajouter un patient en salle d'attente</Button>                
+            </div> */}
             <Dialog
                 contentClassName="pb-0 px-0"
                 isOpen={searchDialogOpen}
@@ -183,18 +189,7 @@ const _Search = ({ className }: { className?: string }) => {
                 onRequestClose={handleSearchClose}
             >
                 <div>
-                    
-                    {/* <div className="px-4 flex items-center justify-between border-b border-gray-200 dark:border-gray-600"> */}
                     <div className="px-6 pb-6">
-                        {/* <div className="flex items-center">
-                            <HiOutlineSearch className="text-xl" />
-                            <input
-                                ref={inputRef}
-                                className="ring-0 outline-none block w-full p-4 text-base bg-transparent text-gray-900 dark:text-gray-100"
-                                placeholder="Search..."
-                                onChange={handleSearch}
-                            />
-                        </div> */}
                         <Button
                             className="ltr:mr-2 rtl:ml-2 mb-4"
                             variant="twoTone"
@@ -213,9 +208,6 @@ const _Search = ({ className }: { className?: string }) => {
                                 onChange={handleSearch}
                             />
                         </div>
-                        {/* <Button size="xs" onClick={handleSearchClose}>
-                            Esc
-                        </Button> */}
                     </div>
                     <div className="py-6 px-5 max-h-[550px] overflow-y-auto">
                         {searchResult.map((result) => (
@@ -263,6 +255,5 @@ const _Search = ({ className }: { className?: string }) => {
     )
 }
 
-const AddPatientModal = withHeaderItem(_Search)
 
 export default AddPatientModal

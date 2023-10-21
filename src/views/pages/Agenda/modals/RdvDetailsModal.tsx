@@ -48,36 +48,6 @@ const detailsLabels = [
 const RdvDetailsModal = ({dialogIsOpen, setIsOpen, rdvDetails}:ModalSettings  ) => {
     const { name, email, date, startTime, duration, rdvType, consultationReason, typeOfCare, status, postponementReason, description, practitioner } = rdvDetails;
 
-    const getFormattedTime = () => {        
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const time = `${hours}:${minutes}`;
-
-        return time;
-    }
-
-    const getFormattedDate = () => {
-        // let date = new Date('2023-09-07');
-        let date = new Date();
-
-        // Define the month names in French
-        const monthNames = [
-        'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
-        'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
-        ];
-
-        // Extract the day, month, and year from the date
-        let day = date.getDate();
-        let month = date.getMonth();
-        let year = date.getFullYear();
-
-        // Generate the formatted date string
-        let formattedDate = `${day} ${monthNames[month]} ${year}`;
-
-        return formattedDate;
-    }
-
     const openDialog = () => {
         setIsOpen(true)
     }
@@ -111,7 +81,7 @@ const RdvDetailsModal = ({dialogIsOpen, setIsOpen, rdvDetails}:ModalSettings  ) 
                 Retour
             </Button>
             <h4 className="mb-4">Details du Rendez-vous</h4>
-            <div className="max-h-96 overflow-y-auto">
+            <div className="max-h-[67vh] overflow-y-auto">
                 <Table>
                     <TBody>
 

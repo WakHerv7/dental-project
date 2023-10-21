@@ -3,55 +3,22 @@ import Button from '@/components/ui/Button'
 import Dialog from '@/components/ui/Dialog'
 import type { MouseEvent } from 'react'
 import Avatar from '@/components/ui/Avatar';
-
+import getFormattedDate from '@/utils/getFormattedDate';
+import getPersonAge from '@/utils/getPersonAge';
 
 type Props = {
     dialogIsOpen: boolean,
     setIsOpen: (value:boolean) => void,
     picture: string,
     username: string,
-    birthdate: Date
+    birthdate: string,
 }
 
 const BirthdayModal = ({dialogIsOpen, setIsOpen,
     picture, username, birthdate}: Props) => {
     // const [dialogIsOpen, setIsOpen] = useState(false)
 
-    const getFormattedDate = () => {
-        // let date = new Date('2023-09-07');
-        let date = new Date();
-
-        // Define the month names in French
-        const monthNames = [
-        'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
-        'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
-        ];
-
-        // Extract the day, month, and year from the date
-        let day = date.getDate();
-        let month = date.getMonth();
-        let year = date.getFullYear();
-
-        // Generate the formatted date string
-        let formattedDate = `${day} ${monthNames[month]} ${year}`;
-
-        return formattedDate;
-    }
-
-    const getPersonAge = () => {
-        let today = new Date();
-        // Calculate the age
-        let age = today.getFullYear() - birthdate.getFullYear();
-        // Check if the birthdate hasn't occurred yet in the current year
-        if (
-        today.getMonth() < birthdate.getMonth() ||
-        (today.getMonth() === birthdate.getMonth() &&
-            today.getDate() < birthdate.getDate())
-        ) {
-            age--;
-        }
-        return `${age}`; // Output: The person's age based on the current date
-    }
+    
 
     const openDialog = () => {
         setIsOpen(true)
@@ -88,7 +55,7 @@ const BirthdayModal = ({dialogIsOpen, setIsOpen,
             />
             <h5 className="mb-4">{username}</h5>
             <p>
-                Nous sommes le <strong>{getFormattedDate()}</strong>, et M. <strong>{username}</strong> a exactement <strong>{getPersonAge()} ans</strong> aujourd'hui. Souhaitez lui un
+                Nous sommes le <strong>{getFormattedDate()}</strong>, et M. <strong>{username}</strong> a exactement <strong>{getPersonAge(birthdate)} ans</strong> aujourd'hui. Souhaitez lui un
                 <br/>
                 <strong>JOYEUX ANNIVERSAIRE</strong>
             </p>

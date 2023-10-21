@@ -150,7 +150,7 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
                 </div>
                 
             </div>
-            <div className="max-h-96 overflow-y-auto">
+            <div className="max-h-[67vh] overflow-y-auto">
                 <Table>
                     <TBody>
 

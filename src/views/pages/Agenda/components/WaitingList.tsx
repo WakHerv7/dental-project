@@ -174,7 +174,7 @@ const WaitingList = () => {
                     }}
                     picture={"/img/avatars/thumb-1.jpg"}
                     username={event.eventName}
-                    birthdate={new Date("1999-10-25")}
+                    birthdate={"1999-10-25"}
                     />
                     <div onClick={()=>openRdvDetailsModal(index)}>
                         <h6 className="text-sm font-bold">

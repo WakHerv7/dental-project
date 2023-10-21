@@ -1,6 +1,6 @@
 .radio {
-  @apply h-5 
-    w-5 
+  @apply h-3 
+    w-3 
     border 
     border-gray-300
     dark:border-gray-600
@@ -17,8 +17,14 @@
     shadow-sm;
 
   &:checked {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
-    @apply bg-current border-transparent;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='0'/%3e%3c/svg%3e");
+    @apply bg-current 
+    border
+    border-2
+    border-indigo-300
+    dark:border-indigo-600
+    /* border-transparent */
+    ;
   }
 
   &.disabled {

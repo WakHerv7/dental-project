@@ -38,6 +38,7 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
 
 
     return (
+        <>        
         <Card className="mb-4">
             <div className="mx-auto max-w-[420px]">
                 <Calendar
@@ -127,6 +128,8 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
             <WaitingRoom/>
 
         </Card>
+
+        </>
     )
 }
 

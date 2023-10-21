@@ -1,6 +1,4 @@
-import Container from '@/components/shared/Container'
 import Schedule from './components/Schedule'
-import Activities from './components/Activities'
 import { useEffect } from 'react'
 import CalendarView from '@/components/shared/CalendarView'
 import EventDialog, { EventParam } from './components/EventDialog'
@@ -27,10 +25,20 @@ import type {
     DateSelectArg,
 } from '@fullcalendar/core'
 
+import { HiIdentification, HiUserAdd } from 'react-icons/hi';
+import { FaClock, FaCalendarPlus } from 'react-icons/fa';
+import Tooltip from '@/components/ui/Tooltip';
+import CallFormModal from './modals/CallFormModal';
+import TimeSlotFormModal from './modals/TimeSlotFormModal';
+import {useState} from 'react';
+
 injectReducer('projectDashboard', reducer)
 injectReducer('crmCalendar', reducer)
 
 const Agenda = () => {
+    // const [callFormDialogOpen, setCallFormDialogOpen] = useState(false)
+    // const [timeSlotFormDialogOpen, setTimeSlotFormDialogOpen] = useState(false)
+
     // projectDashboard     *****************************    
     const dispatch = useAppDispatch()
     const dashboardData = useAppSelector(
@@ -115,6 +123,42 @@ const Agenda = () => {
 
     return (
         <div className="h-full w-full">
+            <div className="flex gap-4 mb-3">
+                {/* <div className={`text-lg bg-indigo-900 w-fit text-white rounded-[5px] p-[5px]`}>
+                    <HiIdentification />
+                </div> */}
+                {/* <Tooltip title="Fiche d'appel" className="bg-white text-indigo-600" placement='bottom'>
+                    <div onClick={()=>setCallFormDialogOpen(true)} className={`text-[30px] w-fit text-indigo-600 bg-white hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
+                        <HiIdentification />
+                    </div>
+                </Tooltip>
+                <CallFormModal
+                dialogIsOpen={callFormDialogOpen}
+                setIsOpen={setCallFormDialogOpen}
+                />
+
+                <Tooltip title="Recherche de créneau"  className="bg-white text-indigo-600" placement='bottom'>
+                    <div onClick={()=>setTimeSlotFormDialogOpen(true)} className={`text-[30px] w-fit text-indigo-600 bg-white hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
+                        <FaClock />
+                    </div>
+                </Tooltip>
+                <TimeSlotFormModal
+                dialogIsOpen={timeSlotFormDialogOpen}
+                setIsOpen={setTimeSlotFormDialogOpen}
+                />
+                
+                <Tooltip title="Ajouter un nouveau patient" className="bg-white text-indigo-600" placement='bottom'>
+                    <div className={`text-[30px] w-fit text-indigo-600 
+                    bg-white hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
+                        <HiUserAdd />
+                    </div>
+                </Tooltip>
+                <Tooltip title="Definir un rendez-vous" className="bg-white text-indigo-600" placement='bottom'>
+                    <div className={`text-[30px] w-fit text-indigo-600 bg-white hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
+                        <FaCalendarPlus />
+                    </div>
+                </Tooltip> */}
+            </div>
             <div className="flex md:flex-col xl:flex-row gap-4">
                 <div className="flex flex-col gap-4">
                     <div className="xl:w-[380px]">

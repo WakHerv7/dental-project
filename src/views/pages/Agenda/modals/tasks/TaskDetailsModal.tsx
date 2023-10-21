@@ -13,7 +13,7 @@ type TaskProps = {
     applicant: string,
     executor: string,
   }
-type ModalSettings = {
+type ModalProps = {
     dialogIsOpen: boolean,
     setIsOpen: (value:boolean) => void,
     taskDetails: TaskProps,
@@ -30,7 +30,7 @@ const detailsLabels = [
     "Exécutant",
 ];
 
-const TaskDetailsModal = ({dialogIsOpen, setIsOpen, taskDetails}:ModalSettings  ) => {
+const TaskDetailsModal = ({dialogIsOpen, setIsOpen, taskDetails}:ModalProps  ) => {
     const { title, category, status, description, applicant, executor } = taskDetails;
 
     const openDialog = () => {
@@ -66,7 +66,7 @@ const TaskDetailsModal = ({dialogIsOpen, setIsOpen, taskDetails}:ModalSettings  
                 Retour
             </Button>
             <h4 className="mb-4">Details de la tache</h4>
-            <div className="max-h-96 overflow-y-auto">
+            <div className="max-h-[67vh] overflow-y-auto">
                 <Table>
                     <TBody>
 
