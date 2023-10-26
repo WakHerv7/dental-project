@@ -123,7 +123,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
     const checkboxColor =
         color || colorContext || `${themeColor}-${primaryColorLevel}`
 
-    const checkboxDefaultClass = `checkbox text-${checkboxColor}`
+    // const checkboxDefaultClass = `checkbox text-${checkboxColor}`
+    const checkboxDefaultClass = `checkbox text-nael-blue-600`
     const checkboxColorClass = disabled && 'disabled'
     const labelDefaultClass = `checkbox-label`
     const labelDisabledClass = disabled && 'disabled'

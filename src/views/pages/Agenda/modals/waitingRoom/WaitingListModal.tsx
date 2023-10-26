@@ -107,7 +107,7 @@ const WaitingListModal = ( {searchDialogOpen, setSearchDialogOpen}:ModalProps ) 
     </div>
     <Dialog
         isOpen={dialogIsOpen}        
-        contentClassName="pb-0 px-0 bg-indigo-100"
+        contentClassName="pb-0 px-0 bg-nael-lighten-600"
         onClose={onDialogClose}
         onRequestClose={onDialogClose}
         closable={false}
@@ -223,7 +223,7 @@ const WaitingListModal = ( {searchDialogOpen, setSearchDialogOpen}:ModalProps ) 
                                 </div>
                             </div>
                         </div>
-                        <div className={`w-fit px-3 mb-4 text-indigo-600 bg-indigo-100 dark:text-indigo-100 dark:bg-indigo-500/20 rounded-[5px] p-[5px]`}>
+                        <div className={`w-fit px-3 mb-4 text-nael-blue-600 bg-nael-lighten-600 dark:text-indigo-100 dark:bg-indigo-500/20 rounded-[5px] p-[5px]`}>
                             <p className='text-sm font-[600]'>
                                 Some quick example text to build on the card title and make
                                 up the bulk of the card&apos;s content.

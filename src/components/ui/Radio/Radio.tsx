@@ -108,7 +108,8 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, checkedProp, groupValue])
 
-    const radioDefaultClass = `radio text-${radioColor}`
+    // const radioDefaultClass = `radio text-${radioColor}`
+    const radioDefaultClass = `radio text-nael-blue-600`
     const radioColorClass = disabled && 'disabled'
     const labelDisabledClass = disabled && 'disabled'
 

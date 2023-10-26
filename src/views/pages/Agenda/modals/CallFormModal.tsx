@@ -128,7 +128,7 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                         <FormItem label="Intensité" >
                         <div className="mt-4 flex items-center">
                             <Button size="sm" icon={<HiMinus />} onClick={onDecrease} />
-                            <Progress className="mx-0 md:mx-4" percent={percentage} />
+                            <Progress color="nael-blue-600" className="mx-0 md:mx-4" percent={percentage} />
                             <Button size="sm" icon={<HiPlus />} onClick={onIncrease} />
                             {/* <Progress variant="circle" percent={percentage} /> */}
                         </div>
@@ -186,7 +186,7 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                                 />
                             </FormItem>
                             <FormItem label="Sont-ils efficaces ?">
-                                <Switcher defaultChecked color="indigo-500"/>
+                                <Switcher defaultChecked color="nael-blue-600"/>
                             </FormItem>
                         </div>
                     </div>
