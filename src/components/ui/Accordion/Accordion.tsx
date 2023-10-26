@@ -1,7 +1,7 @@
 import { ReactNode, forwardRef, useEffect, useRef, useState } from 'react';
 import type { CommonProps } from '../@types/common';
 import "./accordion-style.css";
-import TodoList from '@/views/pages/Agenda/components/tasks/TodoList';
+import TodoList from '@/views/pages/Dashboard/components/tasks/TodoList';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import Badge from '../Badge';
 interface AccordionItem {

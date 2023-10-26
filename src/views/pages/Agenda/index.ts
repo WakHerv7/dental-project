@@ -1,3 +1,3 @@
-import Agenda from './AgendaDashboard'
+import Agenda from './Agenda'
 
 export default Agenda

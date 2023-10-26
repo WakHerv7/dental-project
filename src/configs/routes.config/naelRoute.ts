@@ -7,7 +7,7 @@ const naelRoute: Routes = [
     {
         key: 'apps.dashboard',
         path: `${APP_PREFIX_PATH}/dashboard`,
-        component: lazy(() => import('@/views/pages/FeatureInDevelopment')),
+        component: lazy(() => import('@/views/pages/Dashboard')),
         authority: [ADMIN, USER],
     },
     {

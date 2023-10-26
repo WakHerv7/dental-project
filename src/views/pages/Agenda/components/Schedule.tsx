@@ -10,7 +10,7 @@ import Select from '@/components/ui/Select';
 import Tag from '@/components/ui/Tag'
 import WaitingList from './WaitingList';
 import OngoingTasks from './OngoingTasks';
-import WaitingRoom from './waitingRoom/WaitingRoom';
+import WaitingRoom from './WaitingRoom';
 
 type ScheduleProps = {
     data?: {

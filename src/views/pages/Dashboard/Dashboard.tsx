@@ -1,12 +1,12 @@
-import Schedule from './components/Schedule'
+import Schedule from '../Agenda/components/Schedule'
 import { useEffect } from 'react'
 import CalendarView from '@/components/shared/CalendarView'
-import EventDialog, { EventParam } from './components/EventDialog'
+import EventDialog, { EventParam } from '../Agenda/components/EventDialog'
 import {
     getProjectDashboardData,
     useAppDispatch,
     useAppSelector,
-} from './store'
+} from '../Agenda/store'
 
 import reducer, {
     getEvents,
@@ -15,7 +15,7 @@ import reducer, {
     openDialog,
     useAppDispatch as useCalendarAppDispatch,
     useAppSelector as useCalendarAppSelector,
-} from './store/calendar'
+} from '../Agenda/store/calendar'
 import { injectReducer } from '@/store'
 import cloneDeep from 'lodash/cloneDeep'
 import dayjs from 'dayjs'
@@ -28,16 +28,16 @@ import type {
 import { HiIdentification, HiUserAdd } from 'react-icons/hi';
 import { FaClock, FaCalendarPlus } from 'react-icons/fa';
 import Tooltip from '@/components/ui/Tooltip';
-import CallFormModal from './modals/CallFormModal';
-import TimeSlotFormModal from './modals/TimeSlotFormModal';
+import CallFormModal from '../Agenda/modals/CallFormModal';
+import TimeSlotFormModal from '../Agenda/modals/TimeSlotFormModal';
 import {useState} from 'react';
 import Tasks from './components/tasks/Tasks';
-import WaitingRoomList from './components/waitingRoom/WaitingRoomList'
+import WaitingRoomList from './components/WaitingRoomList'
 
 injectReducer('projectDashboard', reducer)
 injectReducer('crmCalendar', reducer)
 
-const Agenda = () => {
+const Dashboard = () => {
     // const [callFormDialogOpen, setCallFormDialogOpen] = useState(false)
     // const [timeSlotFormDialogOpen, setTimeSlotFormDialogOpen] = useState(false)
 
@@ -154,4 +154,4 @@ const Agenda = () => {
     )
 }
 
-export default Agenda
+export default Dashboard
