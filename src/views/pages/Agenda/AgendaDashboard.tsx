@@ -31,6 +31,8 @@ import Tooltip from '@/components/ui/Tooltip';
 import CallFormModal from './modals/CallFormModal';
 import TimeSlotFormModal from './modals/TimeSlotFormModal';
 import {useState} from 'react';
+import Tasks from './components/tasks/Tasks';
+import WaitingRoomList from './components/waitingRoom/WaitingRoomList'
 
 injectReducer('projectDashboard', reducer)
 injectReducer('crmCalendar', reducer)
@@ -125,9 +127,8 @@ const Agenda = () => {
         <div className="h-full w-full">
             <div className="flex md:flex-col xl:flex-row gap-4">
                 <div className="flex flex-col gap-4">
-                    <div className="xl:w-[380px]">
-                        <Schedule data={dashboardData?.scheduleData} />
-                        {/* <Activities data={dashboardData?.activitiesData} /> */}
+                    <div className="xl:w-[300px]">
+                        <Tasks />                        
                     </div>
                 </div>
                 <div className="flex flex-col gap-4 flex-auto">
@@ -140,6 +141,11 @@ const Agenda = () => {
                         eventDrop={onEventChange}
                     />
                     <EventDialog submit={onSubmit} />
+                </div>
+                <div className="flex flex-col gap-4">
+                    <div className="">
+                        <WaitingRoomList />
+                    </div>
                 </div>
             </div>
             

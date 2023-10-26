@@ -1,0 +1,9 @@
+
+.transition-max-height {
+    transition-property: max-height;
+    overflow: hidden;
+  }
+  
+  .open {
+    max-height: 1000px; /* Or any other large enough value to accommodate the content */
+  }

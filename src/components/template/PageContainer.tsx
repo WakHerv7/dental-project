@@ -43,7 +43,7 @@ const PageContainer = (props: PageContainerProps) => {
                         'page-container relative h-full flex flex-auto flex-col',
                         pageContainerType !== 'gutterless' &&
                             `${PAGE_CONTAINER_GUTTER_X} ${PAGE_CONTAINER_GUTTER_Y}`,
-                        pageContainerType == 'nael-gutter' && 'md:px-3 md:pt-3',
+                        pageContainerType == 'nael-gutter' && 'md:px-[10px] md:pt-3',
                         pageContainerType === 'contained' && 'container mx-auto'
                     )}
                 >

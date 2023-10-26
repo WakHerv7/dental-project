@@ -1,6 +1,6 @@
 import Button from '@/components/ui/Button';
-import AddPatientModal from '../modals/waitingRoom/AddPatientModal';
-import WaitingListModal from '../modals/waitingRoom/WaitingListModal';
+import AddPatientModal from '../../modals/waitingRoom/AddPatientModal';
+import WaitingListModal from '../../modals/waitingRoom/WaitingListModal';
 import {useState } from 'react';
 
 const WaitingRoom = () => {
