@@ -106,30 +106,47 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     const disabledClass = 'opacity-50 cursor-not-allowed'
 
     const solidColor = () => {
+        // const btn = {
+        //     bgColor: active
+        //         ? `bg-${buttonColor}-${increaseLevel}`
+        //         : `bg-${buttonColor}-${buttonColorLevel}`,
+        //     textColor: 'text-white',
+        //     hoverColor: active
+        //         ? ''
+        //         : `hover:bg-${buttonColor}-${decreaseLevel}`,
+        //     activeColor: `active:bg-${buttonColor}-${increaseLevel}`,
+        // }
+
         const btn = {
-            bgColor: active
-                ? `bg-${buttonColor}-${increaseLevel}`
-                : `bg-${buttonColor}-${buttonColorLevel}`,
-            textColor: 'text-white',
+            bgColor: `bg-nael-blue-600`,
+            textColor: `text-nael-lighten-600`,
             hoverColor: active
                 ? ''
-                : `hover:bg-${buttonColor}-${decreaseLevel}`,
-            activeColor: `active:bg-${buttonColor}-${increaseLevel}`,
+                : `hover:bg-nael-violet-600 hover:text-white`,
+            activeColor: `active:bg-nael-violet-600`,
         }
         return getBtnColor(btn)
     }
     
 
     const twoToneColor = () => {
+        // const btn = {
+        //     bgColor: active
+        //         ? `bg-${buttonColor}-200 dark:bg-${buttonColor}-50`
+        //         : `bg-${buttonColor}-50 dark:bg-${buttonColor}-500 dark:bg-opacity-20`,
+        //     textColor: `text-${buttonColor}-${buttonColorLevel} dark:text-${buttonColor}-50`,
+        //     hoverColor: active
+        //         ? ''
+        //         : `hover:bg-${buttonColor}-100 dark:hover:bg-${buttonColor}-500 dark:hover:bg-opacity-30`,
+        //     activeColor: `active:bg-${buttonColor}-200 dark:active:bg-${buttonColor}-500 dark:active:bg-opacity-40`,
+        // }
         const btn = {
-            bgColor: active
-                ? `bg-${buttonColor}-200 dark:bg-${buttonColor}-50`
-                : `bg-${buttonColor}-50 dark:bg-${buttonColor}-500 dark:bg-opacity-20`,
-            textColor: `text-${buttonColor}-${buttonColorLevel} dark:text-${buttonColor}-50`,
+            bgColor: `bg-nael-lighten-600`,
+            textColor: `text-nael-blue-600`,
             hoverColor: active
                 ? ''
-                : `hover:bg-${buttonColor}-100 dark:hover:bg-${buttonColor}-500 dark:hover:bg-opacity-30`,
-            activeColor: `active:bg-${buttonColor}-200 dark:active:bg-${buttonColor}-500 dark:active:bg-opacity-40`,
+                : `hover:bg-nael-violet-600 hover:text-white`,
+            activeColor: `active:bg-nael-violet-600`,
         }
         return getBtnColor(btn)
     }

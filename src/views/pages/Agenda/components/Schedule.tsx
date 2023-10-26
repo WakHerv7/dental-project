@@ -85,8 +85,8 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
             <hr className="my-6" />
             
             <div className="flex flex-col gap-3">
-                <Button variant="solid">Nouveau rendez-vous</Button>
-                <Button variant="twoTone">Voir la liste des rendez-vous</Button>
+                <Button variant="solid" className='bg-nael-blue-600'>Nouveau rendez-vous</Button>
+                <Button variant="twoTone" className='text-nael-violet-600 bg-nael-lighten-600'>Voir la liste des rendez-vous</Button>
             </div>            
             
             <hr className="my-6" />
