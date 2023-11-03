@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '@/components/ui/Button';
-import Dialog from '@/components/ui/Dialog';
 import type { MouseEvent } from 'react';
-import Table from '@/components/ui/Table';
+import {Table, Input, Dialog, Button} from '@/components/ui';
 import { HiReply } from 'react-icons/hi';
 import Select from '@/components/ui/Select';
-import { HiDotsVertical } from 'react-icons/hi';
+import { HiDotsVertical, HiOutlineSearch } from 'react-icons/hi';
 import Dropdown from '@/components/ui/Dropdown';
 import type { SyntheticEvent } from 'react';
 import TaskDetailsModal from './TaskDetailsModal';
+import {getFormattedDate, getFormattedTime, getPersonAge} from '@/utils';
 
 type ModalSettings = {
     dialogIsOpen: boolean,
@@ -22,42 +21,52 @@ const tasksList = [
     {
         id: 0,
         title: 'Titre de la tache 1',
-        by: 'Louise Martin',
-        to: 'Paul Enrique',
+        requerant: 'Louise Martin',
+        executant: 'Paul Enrique',
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
         color: 'red',
+        deadlineDate: '2023-09-15',
+        deadlineTime: '10:15',
     },
     {
         id: 1,
         title: 'Titre de la tache 2',
-        by: 'Louise Martin',
-        to: 'Paul Enrique',
+        requerant: 'Louise Martin',
+        executant: 'Paul Enrique',
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
         color: 'green',
+        deadlineDate: '2023-09-15',
+        deadlineTime: '10:15',
     },
     {
         id: 2,
         title: 'Titre de la tache 3',
-        by: 'Louise Martin',
-        to: 'Paul Enrique',
+        requerant: 'Louise Martin',
+        executant: 'Paul Enrique',
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
         color: 'yellow',
+        deadlineDate: '2023-09-15',
+        deadlineTime: '10:15',
     },
     {
         id: 3,
         title: 'Titre de la tache 4',
-        by: 'Louise Martin',
-        to: 'Paul Enrique',
+        requerant: 'Louise Martin',
+        executant: 'Paul Enrique',
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
         color: 'blue',
+        deadlineDate: '2023-09-15',
+        deadlineTime: '10:15',
     },
     {
         id: 4,
         title: 'Titre de la tache 5',
-        by: 'Louise Martin',
-        to: 'Paul Enrique',
+        requerant: 'Louise Martin',
+        executant: 'Paul Enrique',
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
         color: 'indigo',
+        deadlineDate: '2023-09-15',
+        deadlineTime: '10:15',
     },
 ];
 
@@ -121,6 +130,11 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
             <div className="flex items-center justify-between mb-6">
                 <h4>Liste des taches</h4>
                 <div className="flex items-center gap-2">
+                    <Input
+                        placeholder="Rechercher une tache"
+                        prefix={<HiOutlineSearch className="text-xs" />}
+                        className='max-w-[200px]'
+                    />
                     <Select
                         placeholder="Toutes les taches"
                         options={[
@@ -151,37 +165,47 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
                 
             </div>
             <div className="max-h-[67vh] overflow-y-auto">
-                <Table>
+                <Table className='table-auto'>
+                    <THead>
+                        <Tr>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Titre</Th>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Description</Th>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Requérant</Th>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Exécutant</Th>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Date d'échéance</Th>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Heure</Th>
+                            <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Actions</Th>
+                        </Tr>
+                    </THead>
                     <TBody>
 
                     {tasksList.map((task, index) => (
                         <Tr key={index}>
-                            {/* <Td>
-                                
-                            </Td> */}
-                            <Td className='relative' style={{ width:200}}>
+                            <Td className='relative text-xs align-top' style={{ width:500}}>
                                 <span className={`absolute bg-${task.color}-500`}
                                     style={{
                                         position:'absolute',
-                                        top: '50%',
-                                        transform: 'translateY(-50%)',
+                                        top: '15px',
                                         left:0,
                                         display:'block',
-                                        width: 4,
-                                        height: '70%',
-                                        // background: "red",
+                                        width: 12,
+                                        height: '20px',
+                                        borderRadius: '35px',
                                     }}>
                                 </span>
                                 <strong>{task.title}</strong>
                             </Td>
-                            <Td style={{ minWidth:150}}>Par <Link to="#">{task.by}</Link> à <Link to="#">{task.to}</Link></Td>
-                            <Td className={"w-200"}
-                            style={{ width:450}}
-                            >{task.description}</Td>
-                            <Td>
+                            <Td className={"text-xs align-top"} style={{width:500, paddingLeft:'0px'}}>{task.description}</Td>
+                            <Td className={"text-xs text-[#0F94CD] align-top"} style={{paddingLeft:'0px'}}>{task.requerant}</Td>
+                            <Td className={"text-xs text-[#0F94CD] align-top"} style={{paddingLeft:'0px'}}>{task.executant}</Td>
+                            <Td className={"text-xs align-top"} style={{paddingLeft:'0px'}}>{getFormattedDate({mydate:task.deadlineDate, monthShort:true})}</Td>
+                            <Td className={"text-xs align-top"} style={{paddingLeft:'0px'}}>{task.deadlineTime}</Td>
+
+                            <Td className={"text-xs align-top"}>
+                                <div>
                                 <Dropdown 
                                 renderTitle={
-                                    <HiDotsVertical />
+                                    <HiDotsVertical size={18} className='cursor-pointer'/>
                                 }
                                 menuClass="p-0 min-w-[100px] "
                                 onClick={onDropdownClick}
@@ -217,10 +241,11 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
                                         category: "Clinique",
                                         status: "En cours",
                                         description: task.description,
-                                        applicant: task.by,
-                                        executor: task.to,
+                                        applicant: task.requerant,
+                                        executor: task.executant,
                                     }}
                                 />
+                                </div>
                             </Td>
                         </Tr>
                     ))}
@@ -248,4 +273,3 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
 }
 
 export default TasksListModal;
-

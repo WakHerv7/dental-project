@@ -11,6 +11,8 @@ import Tag from '@/components/ui/Tag'
 import WaitingList from './WaitingList';
 import OngoingTasks from './OngoingTasks';
 import WaitingRoom from './WaitingRoom';
+import RdvListModal from '../modals/rdv/RdvListModal';
+import RdvFormModal from '../modals/rdv/RdvFormModal';
 
 type ScheduleProps = {
     data?: {
@@ -33,6 +35,9 @@ const isToday = (someDate: Date) => {
 
 const Schedule = ({ data = [] }: ScheduleProps) => {
     const [value, setValue] = useState<Date | null>()
+    
+    const [rdvListIsOpen, setRdvListIsOpen] = useState(false);
+    const [rdvFormIsOpen, setRdvFormIsOpen] = useState(false);
 
     const { textTheme } = useThemeClass()
 
@@ -85,8 +90,21 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
             <hr className="my-6" />
             
             <div className="flex flex-col gap-3">
-                <Button variant="solid" className='bg-nael-blue-600'>Nouveau rendez-vous</Button>
-                <Button variant="twoTone" className='text-nael-violet-600 bg-nael-lighten-600'>Voir la liste des rendez-vous</Button>
+                <Button variant="solid" className='bg-nael-blue-600'
+                onClick={()=>setRdvFormIsOpen(true)}
+                >Nouveau rendez-vous</Button>
+                <RdvFormModal
+                dialogIsOpen={rdvFormIsOpen}
+                setIsOpen={setRdvFormIsOpen}
+                />
+
+                <Button variant="twoTone" className='text-nael-violet-600 bg-nael-lighten-600'
+                onClick={()=>setRdvListIsOpen(true)}
+                >Voir la liste des rendez-vous</Button>
+                <RdvListModal
+                dialogIsOpen={rdvListIsOpen}
+                setIsOpen={setRdvListIsOpen}
+                />
             </div>            
             
             <hr className="my-6" />

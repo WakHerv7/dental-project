@@ -16,6 +16,7 @@ export interface CheckboxProps extends CommonProps {
     onChange?: (values: boolean, e: ChangeEvent<HTMLInputElement>) => void
     readOnly?: boolean
     value?: CheckboxValue
+    labelMargin?: boolean,
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     field?: any
 }
@@ -40,6 +41,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
         value,
         checked: controlledChecked,
         labelRef,
+        labelMargin=true,
         field,
         ...rest
     } = props
@@ -154,7 +156,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
             {children ? (
                 <span
                     className={classNames(
-                        'ltr:ml-2 rtl:mr-2',
+                        !labelMargin ? '':`ltr:ml-2 rtl:mr-2`,
                         disabled ? 'opacity-50' : ''
                     )}
                 >

@@ -3,9 +3,11 @@ import Tag from '@/components/ui/Tag';
 import classNames from 'classnames';
 import Button from '@/components/ui/Button';
 import TasksListModal from '../modals/tasks/TasksListModal';
+import TaskFormModal from '../modals/tasks/TaskFormModal';
 
 const OngoingTasks = () => {
-    const [dialogIsOpen, setDialogIsOpen] = useState(false);
+    const [taskListIsOpen, setTaskListIsOpen] = useState(false);
+    const [taskFormIsOpen, setTaskFormIsOpen] = useState(false);
   return (
     <div>
         <div className="flex items-center gap-2">
@@ -25,14 +27,20 @@ const OngoingTasks = () => {
         </div>
         
         <div className="flex flex-col gap-3">
-            <Button variant="solid">Nouvelle tache</Button>
+            <Button variant="solid"
+            onClick={()=>setTaskFormIsOpen(true)}
+            >Nouvelle tache</Button>
+            <TaskFormModal
+            dialogIsOpen={taskFormIsOpen}
+            setIsOpen={setTaskFormIsOpen}
+            />
             <Button variant="twoTone" 
-            onClick={()=>setDialogIsOpen(true)}
+            onClick={()=>setTaskListIsOpen(true)}
             >Voir toutes les taches
             </Button>
             <TasksListModal
-            dialogIsOpen={dialogIsOpen}
-            setIsOpen={setDialogIsOpen}
+            dialogIsOpen={taskListIsOpen}
+            setIsOpen={setTaskListIsOpen}
             />
         </div> 
     </div>

@@ -8,7 +8,7 @@ import Select from '@/components/ui/Select';
 import { HiDotsVertical } from 'react-icons/hi';
 import Dropdown from '@/components/ui/Dropdown';
 import BirthdayModal from "../modals/BirthdayModal";
-import RdvDetailsModal from "../modals/RdvDetailsModal";
+import RdvDetailsModal from "../modals/rdv/RdvDetailsModal";
 import ReprogramAppointmentModal from "../modals/ReprogramAppointmentModal";
 
 

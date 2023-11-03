@@ -106,25 +106,35 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     const disabledClass = 'opacity-50 cursor-not-allowed'
 
     const solidColor = () => {
-        // const btn = {
-        //     bgColor: active
-        //         ? `bg-${buttonColor}-${increaseLevel}`
-        //         : `bg-${buttonColor}-${buttonColorLevel}`,
-        //     textColor: 'text-white',
-        //     hoverColor: active
-        //         ? ''
-        //         : `hover:bg-${buttonColor}-${decreaseLevel}`,
-        //     activeColor: `active:bg-${buttonColor}-${increaseLevel}`,
-        // }
+        let btn = {
+            bgColor:'',
+            textColor: '',
+            hoverColor:'',
+            activeColor:'',
+        };
 
-        const btn = {
-            bgColor: `bg-nael-blue-600`,
-            textColor: `text-nael-lighten-600`,
-            hoverColor: active
-                ? ''
-                : `hover:bg-nael-violet-600 hover:text-white`,
-            activeColor: `active:bg-nael-violet-600`,
+        if(buttonColor === 'indigo') {
+            btn = {
+                bgColor: `bg-nael-blue-600`,
+                textColor: `text-nael-lighten-600`,
+                hoverColor: active
+                    ? ''
+                    : `hover:bg-nael-violet-600 hover:text-white`,
+                activeColor: `active:bg-nael-violet-600`,
+            }
+        } else {
+            btn = {
+                bgColor: active
+                    ? `bg-${buttonColor}-${increaseLevel}`
+                    : `bg-${buttonColor}-${buttonColorLevel}`,
+                textColor: 'text-white',
+                hoverColor: active
+                    ? ''
+                    : `hover:bg-${buttonColor}-${decreaseLevel}`,
+                activeColor: `active:bg-${buttonColor}-${increaseLevel}`,
+            }
         }
+
         return getBtnColor(btn)
     }
     
@@ -261,3 +271,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 Button.displayName = 'Button'
 
 export default Button
+

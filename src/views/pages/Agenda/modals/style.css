@@ -1,0 +1,19 @@
+
+.range-slider-nael .range-slider__range {
+    background: #283874;
+    transition: height 0.3s;
+}
+  
+.range-slider-nael .range-slider__thumb {
+    background: #7F88C1;
+    transition: transform 0.3s;
+}
+
+
+/* Range Slider as a Single Thumb Slider */
+.range-slider-nael.single-thumb .range-slider__thumb[data-lower] {
+    width: 0;
+}
+.range-slider-nael.single-thumb .range-slider__range {
+    border-radius: 6px;
+}

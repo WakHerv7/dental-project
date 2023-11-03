@@ -1,7 +1,12 @@
-const getFormattedDate = (mydate?:string) => {
+type MyProps = {
+    mydate?:string,
+    monthShort?:boolean,
+}
+const getFormattedDate = (props?:MyProps) => {
+    // const {mydate, monthShort} = props;
     // let date = new Date('2023-09-07');
     let date = new Date();
-    mydate ? date = new Date(mydate) : null;
+    props?.mydate ? date = new Date(props?.mydate) : null;
 
     // Define the month names in French
     const monthNames = [
@@ -15,7 +20,9 @@ const getFormattedDate = (mydate?:string) => {
     let year = date.getFullYear();
 
     // Generate the formatted date string
-    let formattedDate = `${day} ${monthNames[month]} ${year}`;
+    let formattedDate = props?.monthShort ? 
+    `${day} ${monthNames[month].slice(0,4)} ${year}` 
+    :`${day} ${monthNames[month]} ${year}`;
 
     return formattedDate;
 }

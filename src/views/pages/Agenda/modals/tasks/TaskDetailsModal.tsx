@@ -26,7 +26,7 @@ const detailsLabels = [
     "Categorie",
     "Statut",
     "Description",
-    "Réquerantt",
+    "Réquerant",
     "Exécutant",
 ];
 

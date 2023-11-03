@@ -11,6 +11,8 @@ import { FaClock, FaCalendarPlus } from 'react-icons/fa';
 import Tooltip from '@/components/ui/Tooltip';
 import CallFormModal from '@/views/pages/Agenda/modals/CallFormModal';
 import TimeSlotFormModal from '@/views/pages/Agenda/modals/TimeSlotFormModal';
+import MemoListModal from '@/views/pages/Agenda/modals/memos/MemoListModal';
+
 import { useLocation } from 'react-router-dom';
 
 type ShortcutItem = {
@@ -54,7 +56,8 @@ const ListItem = (props: {
 const _Shortcuts = ({ className }: { className?: string }) => {
     const [callFormDialogOpen, setCallFormDialogOpen] = useState(false)
     const [timeSlotFormDialogOpen, setTimeSlotFormDialogOpen] = useState(false)
-    
+    const [memoListDialogOpen, setMemoListDialogOpen] = useState(false)
+
     const location = useLocation();
     const specificUrl = '/app/agenda/dashboard';
 
@@ -63,12 +66,30 @@ const _Shortcuts = ({ className }: { className?: string }) => {
             <div
                 className={classNames(className, 'flex gap-4')}
             >
-                {shortcuts.map((data, index) => (
+                {/* {shortcuts.map((data, index) => (
                             <ListItem
                             key={data.label + index}
                             data={data}
                         />
-                        ))}
+                        ))} */}
+
+                <div
+                    className={classNames(
+                        'flex items-center justify-between rounded-lg p-3.5 py-2.5 cursor-pointer user-select gap-2',
+                        'bg-nael-lighten-600 text-nael-violet-600 font-semibold',
+                        
+                    )}
+                    onClick={()=>setMemoListDialogOpen(true)}
+                >
+                    <MemoSvg className='text-lg' />
+                    <div className="">
+                        Mémos
+                    </div>
+                </div>
+                <MemoListModal
+                dialogIsOpen={memoListDialogOpen}
+                setIsOpen={setMemoListDialogOpen}
+                />
 
                 {location.pathname === specificUrl?
                 <>

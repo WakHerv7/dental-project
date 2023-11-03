@@ -37,6 +37,27 @@ const timeSlots = [
     },
 ];
 
+const daysList = [
+    {
+        jour: "Lundi",
+    },
+    {
+        jour: "Mardi",
+    },
+    {
+        jour: "Mercredi",
+    },
+    {
+        jour: "Jeudi",
+    },
+    {
+        jour: "Vendredi",
+    },
+    {
+        jour: "Samedi",
+    },
+];
+
 const TimeSlotFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
 
     const openDialog = () => {
@@ -152,90 +173,26 @@ const TimeSlotFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                                 </FormItem>
                             </div>
                             <div className="">
-                                <FormItem label="Lundi" className="mb-0">                        
-                                    <Radio.Group value={1} className='flex flex-wrap gap-4 p-2 w-full text-[13px]'>
-                                        <Radio  className='mb-2' value={1}>Confirmé</Radio>
-                                        <Radio  className='mb-2' value={2}>Annulé et excusé</Radio>
-                                        <Radio  className='mb-0 flex gap-3' value={3}>
-                                            <FormItem label="De" className='flex gap-2 mb-0'>
+                            {daysList.map((item, index) => (
+                                <>
+                                <FormItem label={item.jour} className="mb-0">                        
+                                    <Radio.Group value={1} className=''>
+                                        <div className="flex items-center gap-4 p-2 w-full text-[13px]">
+                                        <Radio  className='' value={1}>Toute la journée</Radio>
+                                        <Radio  className='' value={2}>Non</Radio>
+                                        <Radio  className='mb-0' value={3}>
+                                            <div className='flex items-center gap-3'>
+                                                De
                                                 <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                            <FormItem label="à" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
+                                                à
+                                                <Input type="Time" name="monday-start"/>                                                
+                                            </div>
                                         </Radio>
+                                        </div>
                                     </Radio.Group>
                                 </FormItem>
-                                <FormItem label="Mardi" className="mb-0">                        
-                                    <Radio.Group value={1} className='flex flex-wrap gap-4 p-2 w-full text-[13px]'>
-                                        <Radio  className='mb-2' value={1}>Confirmé</Radio>
-                                        <Radio  className='mb-2' value={2}>Annulé et excusé</Radio>
-                                        <Radio  className='mb-0 flex gap-3' value={3}>
-                                            <FormItem label="De" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                            <FormItem label="à" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                        </Radio>
-                                    </Radio.Group>
-                                </FormItem>
-                                <FormItem label="Mercredi" className="mb-0">                        
-                                    <Radio.Group value={1} className='flex flex-wrap gap-4 p-2 w-full text-[13px]'>
-                                        <Radio  className='mb-2' value={1}>Confirmé</Radio>
-                                        <Radio  className='mb-2' value={2}>Annulé et excusé</Radio>
-                                        <Radio  className='mb-0 flex gap-3' value={3}>
-                                            <FormItem label="De" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                            <FormItem label="à" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                        </Radio>
-                                    </Radio.Group>
-                                </FormItem>
-                                <FormItem label="Jeudi" className="mb-0">                        
-                                    <Radio.Group value={1} className='flex flex-wrap gap-4 p-2 w-full text-[13px]'>
-                                        <Radio  className='mb-2' value={1}>Confirmé</Radio>
-                                        <Radio  className='mb-2' value={2}>Annulé et excusé</Radio>
-                                        <Radio  className='mb-0 flex gap-3' value={3}>
-                                            <FormItem label="De" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                            <FormItem label="à" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                        </Radio>
-                                    </Radio.Group>
-                                </FormItem>
-                                <FormItem label="Vendredi" className="mb-0">                        
-                                    <Radio.Group value={1} className='flex flex-wrap gap-4 p-2 w-full text-[13px]'>
-                                        <Radio  className='mb-2' value={1}>Confirmé</Radio>
-                                        <Radio  className='mb-2' value={2}>Annulé et excusé</Radio>
-                                        <Radio  className='mb-0 flex gap-3' value={3}>
-                                            <FormItem label="De" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                            <FormItem label="à" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                        </Radio>
-                                    </Radio.Group>
-                                </FormItem>
-                                <FormItem label="Samedi" className="mb-0">                        
-                                    <Radio.Group value={1} className='flex flex-wrap gap-4 p-2 w-full text-[13px]'>
-                                        <Radio  className='mb-2' value={1}>Confirmé</Radio>
-                                        <Radio  className='mb-2' value={2}>Annulé et excusé</Radio>
-                                        <Radio  className='mb-0 flex gap-3' value={3}>
-                                            <FormItem label="De" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                            <FormItem label="à" className='flex gap-2 mb-0'>
-                                                <Input type="Time" name="monday-start"/>
-                                            </FormItem>
-                                        </Radio>
-                                    </Radio.Group>
-                                </FormItem>
+                                </>
+                            ))}
                             </div>
 
                             

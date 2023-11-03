@@ -9,11 +9,14 @@ import { HiReply, HiOutlineSearch } from 'react-icons/hi';
 import Input from '@/components/ui/Input'
 import { FormItem } from '@/components/ui/Form'
 import { Field, FormikErrors, FormikTouched, FieldProps } from 'formik'
-import Checkbox from '@/components/ui/Checkbox'
+import {Checkbox, Radio} from '@/components/ui'
 import InputGroup from '@/components/ui/InputGroup'
 import { HiPlus, HiMinus } from 'react-icons/hi'
 import Progress from '@/components/ui/Progress'
 import Switcher from '@/components/ui/Switcher'
+import RangeSlider from 'react-range-slider-input';
+import 'react-range-slider-input/dist/style.css';
+import './style.css';
 
 type ModalProps = {
     dialogIsOpen: boolean,
@@ -53,6 +56,13 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
         }
         setPercentage(value)
     }, [percentage])
+    //-------------------------------------------------------
+
+    const [rangeSlideValue, setRangeSlideValue] = useState([0, 1]);
+
+    const handleChange = (value: number[]) => {
+        setRangeSlideValue(value);
+    };
     //-------------------------------------------------------
 
   return (
@@ -126,10 +136,21 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                     </div>
                     <div>
                         <FormItem label="Intensité" >
-                        <div className="mt-4 flex items-center">
-                            <Button size="sm" icon={<HiMinus />} onClick={onDecrease} />
+                        <div className="mt-4 flex gap-4 items-center">
+                            <RangeSlider
+                            min={0}
+                            max={10}
+                            className={'single-thumb range-slider-nael'}
+                            thumbsDisabled={[false, false]}
+                            rangeSlideDisabled={true}
+                            value={rangeSlideValue}
+                            onInput={handleChange}
+                            />
+                            <h6>{rangeSlideValue[1]}</h6>
+                            
+                            {/* <Button size="sm" icon={<HiMinus />} onClick={onDecrease} />
                             <Progress color="nael-blue-600" className="mx-0 md:mx-4" percent={percentage} />
-                            <Button size="sm" icon={<HiPlus />} onClick={onIncrease} />
+                            <Button size="sm" icon={<HiPlus />} onClick={onIncrease} /> */}
                             {/* <Progress variant="circle" percent={percentage} /> */}
                         </div>
                         </FormItem>
@@ -143,11 +164,26 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                                 />
                             </FormItem>
                             <FormItem label="Localisation" >                        
-                                <div className="flex flex-wrap mt-3 gap-4">
-                                    <Checkbox>Haut</Checkbox>
-                                    <Checkbox>Bas</Checkbox>
-                                    <Checkbox>Gauche</Checkbox>
-                                    <Checkbox>Droite</Checkbox>
+                                <div className="flex flex-wrap mt-3 ml-[20px] gap-4 relative w-[250px] h-[150px]">
+                                    <Checkbox
+                                    labelMargin={false}
+                                    className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col-reverse gap-2 items-center w-[50px]"
+                                    >Haut
+                                    </Checkbox>
+                                    <Checkbox
+                                    labelMargin={false}
+                                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col gap-2 items-center w-[50px]"
+                                    >Bas
+                                    </Checkbox>
+                                    <Checkbox
+                                    labelMargin={false}
+                                    className='absolute top-1/2 left-0 transform -translate-y-1/2 flex-row-reverse gap-2 w-[80px]'
+                                    >Gauche
+                                    </Checkbox>
+                                    <Checkbox 
+                                    className='absolute top-1/2 right-0 transform -translate-y-1/2 w-[70px]'
+                                    >Droite
+                                    </Checkbox>
                                 </div>
                             </FormItem>
                             <FormItem label="Occurence" >                        
@@ -186,7 +222,11 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                                 />
                             </FormItem>
                             <FormItem label="Sont-ils efficaces ?">
-                                <Switcher defaultChecked color="nael-blue-600"/>
+                                {/* <Switcher defaultChecked color="nael-blue-600"/> */}
+                                <Radio.Group value={1} className='mt-3'>
+                                    <Radio  className='mb-2' value={1}>Oui</Radio>
+                                    <Radio  className='mb-2' value={2}>Non</Radio>
+                                </Radio.Group>
                             </FormItem>
                         </div>
                     </div>
