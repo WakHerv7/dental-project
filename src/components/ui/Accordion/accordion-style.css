@@ -7,3 +7,7 @@
   .open {
     max-height: 1000px; /* Or any other large enough value to accommodate the content */
   }
+
+  .border-top-wh {
+    border-top: 2px solid rgb(207, 207, 207);
+  }

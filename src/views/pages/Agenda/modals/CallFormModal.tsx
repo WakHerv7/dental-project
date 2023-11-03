@@ -244,7 +244,7 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                     className="ltr:mr-2 rtl:ml-2 w-full"
                     onClick={onDialogClose}
                 >
-                    Donner un rendez-vous ?
+                    Donner un rendez-vous
                 </Button>
             </div>
             <div>

@@ -9,6 +9,13 @@ import Notification from '../template/Notification'
 import Search from '../template/Search'
 import Shortcuts from '../template/Shortcuts'
 
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { HiOutlineCog } from 'react-icons/hi';
+import Tooltip from '@/components/ui/Tooltip';
+import ParametersModal from '@/views/pages/Agenda/modals/parameters/ParametersModal';
+
+
 const HeaderActionsStart = () => {
     return (
         <>
@@ -19,12 +26,28 @@ const HeaderActionsStart = () => {
 }
 
 const HeaderActionsEnd = () => {
+    const location = useLocation();
+    const specificUrl = '/app/agenda/dashboard';
+    const [parametersDialogOpen, setParametersDialogOpen] = useState(false);
     return (
         <>
             <LanguageSelector hoverable={false} />
             <UserDropdown hoverable={false} />
             <Notification />
-            <SidePanel />
+            {location.pathname === specificUrl? 
+                <>
+                    <div onClick={()=>setParametersDialogOpen(true)} className='cursor-pointer'>
+                        <HiOutlineCog size={24}/>
+                    </div>
+                    <ParametersModal
+                    dialogIsOpen={parametersDialogOpen}
+                    setIsOpen={setParametersDialogOpen}
+                    />
+                </>
+            :
+                <SidePanel />
+            }
+            
         </>
     )
 }

@@ -2,12 +2,13 @@ import { ReactNode, forwardRef, useEffect, useRef, useState } from 'react';
 import type { CommonProps } from '../@types/common';
 import "./accordion-style.css";
 import TodoList from '@/views/pages/Dashboard/components/tasks/TodoList';
-import { HiMinus, HiPlus } from 'react-icons/hi';
+import { HiMinus, HiPlus, HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import Badge from '../Badge';
 interface AccordionItem {
     title: string | ReactNode;
     content?: string | ReactNode;
     contentType?: string | "text" | "checklist" | "image",
+    variant?: string | "arrow" | "plus",
     checklist?:{
         id?: string,
         label:string, 
@@ -58,7 +59,7 @@ const Accordion = forwardRef<HTMLElement, AccordionProps>((props, ref) => {
         {accordionItems.map((item, index) => (
           <div key={index} className={`flex flex-col ${className}`}>
           <button
-            className="py-6 box-border appearance-none cursor-pointer focus:outline-none flex items-center justify-between"
+            className={`py-6 box-border appearance-none cursor-pointer focus:outline-none flex items-center justify-between ${item.variant === "arrow" && index>0 ? "border-top-wh":""}`}
             onClick={() => toggleAccordion(index)}
           >
             <div className="flex gap-3">
@@ -74,30 +75,25 @@ const Accordion = forwardRef<HTMLElement, AccordionProps>((props, ref) => {
                 }
                 
             </div>
-            {activeItems.includes(index) ?
-            <HiMinus size={24} />
-            :
-            <HiPlus size={24} />
-            }
-            {/* <svg
-              className={`w-6 h-6 transform transition-transform ${
-                rotateIndices.includes(index) ? 'rotate-180' : ''
-              }`}
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M9.293 7.293a1 1 0 0 1 1.414 0L12 8.586l1.293-1.293a1 1 0 0 1 1.414 1.414l-2 2a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 0-1.414z"
-              />
-            </svg> */}
+            {item.variant === "arrow" ? 
+              activeItems.includes(index) ?
+              <HiChevronUp size={24} />
+              :
+              <HiChevronDown size={24} />
+            : 
+              activeItems.includes(index) ?
+              <HiMinus size={24} />
+              :
+              <HiPlus size={24} />
+            }            
           </button>
           <div
             ref={(ref) => (contentRefs.current[index] = ref)}
-            style={{ maxHeight: activeItems.includes(index) ? `${contentHeights[index]}px` : '0px' }}
+            style={{ maxHeight: activeItems.includes(index) ? item.contentType === "text" ? "fit-content": `${contentHeights[index]}px` : '0px' }}
             className="overflow-auto transition-max-height duration-700 ease-in-out"
           >
             {item.contentType === "text" ? 
-                <div className="pb-10">{item.content}</div>
+                <div className="pb-5">{item.content}</div>
             : item.contentType === "checklist" ?
                 <TodoList data={item.checklist ? item.checklist : []}/>
                 :

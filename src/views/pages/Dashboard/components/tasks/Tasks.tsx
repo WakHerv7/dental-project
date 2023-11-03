@@ -2,17 +2,19 @@ import { Accordion } from '@/components/ui';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import useThemeClass from '@/utils/hooks/useThemeClass';
-import { useState } from 'react';
 import { HiPlusSm } from 'react-icons/hi';
 import TodoList from './TodoList';
-
+import { useSelector, useDispatch }from 'react-redux';
+import { useState, useEffect }from 'react';
+import { useAppDispatch } from '@/store';
+import { fetchTasks, selectAllTasks, getTasksStatus, getTasksError } from '@/store';
 
 type TasksProps = {
     data?: {
         id: string
         time: string
         eventName: string
-        desciption: string
+        description: string
         type: string
     }[]
 }
@@ -95,9 +97,28 @@ const tasksList = [
 ];
 
 const Tasks = ({ data = [] }: TasksProps) => {
+    const dispatch = useAppDispatch();
+
     const [value, setValue] = useState<Date | null>()
 
     const { textTheme } = useThemeClass()
+
+
+    // --------------------------------------------------------
+    const myTasks = useSelector(selectAllTasks);
+    const tasksStatus = useSelector(getTasksStatus);
+    const tasksError = useSelector(getTasksError);
+    useEffect(() => {
+        if (tasksStatus === 'idle') {
+            dispatch(fetchTasks())            
+        }
+        else if (tasksStatus === 'succeeded') {
+            console.log("======================")
+            console.log("myTasks:",myTasks)
+            console.log("======================")
+        }
+    }, [tasksStatus, dispatch])
+    // --------------------------------------------------------
 
 
     return (

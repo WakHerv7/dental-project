@@ -1,4 +1,5 @@
 import { combineReducers, CombinedState, AnyAction, Reducer } from 'redux'
+import agenda, { AgendaState } from './slices/agenda'
 import auth, { AuthState } from './slices/auth'
 import base, { BaseState } from './slices/base'
 import locale, { LocaleState } from './slices/locale/localeSlice'
@@ -6,6 +7,7 @@ import theme, { ThemeState } from './slices/theme/themeSlice'
 import RtkQueryService from '@/services/RtkQueryService'
 
 export type RootState = CombinedState<{
+    agenda: CombinedState<AgendaState>
     auth: CombinedState<AuthState>
     base: CombinedState<BaseState>
     locale: LocaleState
@@ -19,6 +21,7 @@ export interface AsyncReducers {
 }
 
 const staticReducers = {
+    agenda,
     auth,
     base,
     locale,

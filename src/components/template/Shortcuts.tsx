@@ -9,7 +9,7 @@ import { MemoSvg } from '@/assets/svg'
 import { HiIdentification, HiUserAdd } from 'react-icons/hi';
 import { FaClock, FaCalendarPlus } from 'react-icons/fa';
 import Tooltip from '@/components/ui/Tooltip';
-import CallFormModal from '@/views/pages/Agenda/modals/CallFormModal'
+import CallFormModal from '@/views/pages/Agenda/modals/CallFormModal';
 import TimeSlotFormModal from '@/views/pages/Agenda/modals/TimeSlotFormModal';
 import { useLocation } from 'react-router-dom';
 
