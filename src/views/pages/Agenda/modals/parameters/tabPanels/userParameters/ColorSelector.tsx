@@ -29,8 +29,8 @@ function ColorSelector(props:ColorSelectorProps) {
 
   return (
     <div>
-      <div className={`relative sketchpickergap-4`}>
-        <div className="flex gap-4 cursor-pointer" onClick={handleOpenColorPicker}>
+      <div className={`flex gap-2 relative sketchpickergap-4  w-full`}>
+        <div className="flex gap-4 w-fit cursor-pointer" onClick={handleOpenColorPicker}>
           <span>{props.label}</span>
           {/* Div to display the color  */}
           <div>
@@ -76,14 +76,14 @@ function ColorSelector(props:ColorSelectorProps) {
           </div>
         </div>
         {openColorPicker ?
-        <div className={`flex flex-col ${props.dropdownPosition === 'below' ? 'absolute top-[120%] left-0': ''}`}>
+        <div className={`flex flex-col w-fit${props.dropdownPosition === 'below' ? 'absolute top-[120%] left-0': ''}`}>
           <SketchPicker
             onChange={(color:any) => {
               setSketchPickerColor(color.rgb);
             }}
             color={sketchPickerColor}
           />
-          <div className="bg-white rounded-sm p-2 mt-1 shadow-lg">
+          <div className="bg-white rounded-sm p-2 mt-1 shadow-lg w-[220px] rounded-md">
             <Checkbox
             checked={noColor}
             onChange={setNoColor}>Aucune Couleur</Checkbox>
