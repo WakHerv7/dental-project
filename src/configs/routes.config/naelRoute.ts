@@ -20,7 +20,7 @@ const naelRoute: Routes = [
     {
         key: 'clinic.patientRecord',
         path: `${APP_PREFIX_PATH}/clinic/patient-record`,
-        component: lazy(() => import('@/views/pages/FeatureInDevelopment')),
+        component: lazy(() => import('@/views/pages/Patients')),
         authority: [ADMIN, USER],
     },
     {
