@@ -66,7 +66,7 @@ const TaskDetailsModal = ({dialogIsOpen, setIsOpen, taskDetails}:ModalProps  ) =
                 Retour
             </Button>
             <h4 className="mb-4">Details de la tache</h4>
-            <div className="max-h-[67vh] overflow-y-auto">
+            <div className="">
                 <Table>
                     <TBody>
 

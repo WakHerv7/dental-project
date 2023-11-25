@@ -115,7 +115,7 @@ const TimeSlotFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
             <div className="pl-6 pr-0 pb-6 col-span-4">
                 <h4 className="mb-4">Recherche de creneau horaire</h4>
 
-                <div className="max-h-[67vh] overflow-y-auto px-5">
+                <div className="">
                     <div className="mb-2">
                         <Input
                             placeholder="Rechercher un patient déjà existant..."

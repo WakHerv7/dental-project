@@ -1,6 +1,8 @@
 export { default as Accordion } from './Accordion'
 export { default as Alert } from './Alert'
 export { default as Avatar } from './Avatar'
+export { default as AvatarInput } from './AvatarInput'
+export { default as SectionTitle } from './SectionTitle'
 export { default as Badge } from './Badge'
 export { default as Button } from './Button'
 export { default as Calendar } from './Calendar'
@@ -41,6 +43,9 @@ export { default as Upload } from './Upload'
 
 export type { AlertProps } from './Alert'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
+export type { AvatarInputProps } from './AvatarInput'
+export type { SectionTitleProps } from './SectionTitle'
+
 export type { BadgeProps } from './Badge'
 export type { ButtonProps } from './Button'
 export type { CalenderProps } from './Calendar'
@@ -108,3 +113,4 @@ export type { TimelineProps, TimeLineItemProps } from './Timeline'
 export type { ToastProps } from './toast'
 export type { TooltipProps } from './Tooltip'
 export type { UploadProps } from './Upload'
+

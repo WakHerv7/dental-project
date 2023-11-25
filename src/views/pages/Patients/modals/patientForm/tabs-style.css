@@ -1,0 +1,35 @@
+.patient-w .react-tabs__tab--selected {
+    /* background-color: #7F88C1; */
+    /* color: white; */
+    /* border-radius: 0; */
+}
+.new-patient-tab {
+    position: relative;
+    color: #0277bd;
+}
+.new-patient-tab::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #0277bd ;
+    top:0;
+    left: 0;
+}
+.new-patient-tab.tab-completed {
+    color: #21bfa3 !important;
+}
+.new-patient-tab.tab-completed::after {
+    background: #21bfa3 !important;
+}
+.new-patient-tab.tab-todo {
+    color: #727272 !important;
+}
+.new-patient-tab.tab-todo::after {
+    background: #e0e0e0 !important;
+}
+/* .new-patient-tab::after {
+    content:'';
+    background: #7F88C1 !important;
+    color: white !important;
+} */

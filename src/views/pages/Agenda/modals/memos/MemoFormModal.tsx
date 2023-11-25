@@ -40,7 +40,7 @@ const MemoFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
     >
         <div className="px-6 pb-6">
             <h4 className="mb-4">Mémos</h4>
-            <div className="max-h-[67vh] overflow-y-auto pr-4">
+            <div className="">
                 <div>
                     <FormItem label="Titre"  className='my-2'>
                         <Input                        

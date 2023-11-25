@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import useThemeClass from '@/utils/hooks/useThemeClass';
 import { HiPlusSm } from 'react-icons/hi';
 import TodoList from './TodoList';
+import TaskFormModal from '../../../Agenda/modals/tasks/TaskFormModal';
 import { useSelector, useDispatch }from 'react-redux';
 import { useState, useEffect }from 'react';
 import { useAppDispatch } from '@/store';
@@ -98,10 +99,14 @@ const tasksList = [
 
 const Tasks = ({ data = [] }: TasksProps) => {
     const dispatch = useAppDispatch();
-
     const [value, setValue] = useState<Date | null>()
-
     const { textTheme } = useThemeClass()
+
+    const [taskFormIsOpen, setTaskFormIsOpen] = useState(false);
+    const handleTaskFormModal = (val:boolean) => {
+        document.body.style.overflow = val === true ? 'hidden' : '';
+        setTaskFormIsOpen(val);
+    };
 
 
     // --------------------------------------------------------
@@ -126,10 +131,16 @@ const Tasks = ({ data = [] }: TasksProps) => {
         <Card className="mb-4 p-2 text-white bg-nael-blue-600">
             <div className="flex items-center justify-between mb-6">
                 <h3 className='text-white'>Tâches</h3>
-                <Button size="sm" variant='solid' className="flex gap-1 items-center text-white bg-nael-violet-600">
+                <Button size="sm" variant='solid' 
+                className="flex gap-1 items-center text-white bg-nael-violet-600"
+                onClick={()=>handleTaskFormModal(true)}>
                     <HiPlusSm size={20}/>
                     Créer
                 </Button>
+                <TaskFormModal
+                dialogIsOpen={taskFormIsOpen}
+                setIsOpen={handleTaskFormModal}
+                />
             </div>
             <Accordion accordionItems={tasksList} activeIndexes={[0,2]}/>
 

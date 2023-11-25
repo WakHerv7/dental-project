@@ -8,6 +8,16 @@ import TaskFormModal from '../modals/tasks/TaskFormModal';
 const OngoingTasks = () => {
     const [taskListIsOpen, setTaskListIsOpen] = useState(false);
     const [taskFormIsOpen, setTaskFormIsOpen] = useState(false);
+
+    const handleTaskListModal = (val:boolean) => {
+        document.body.style.overflow = val === true ? 'hidden' : '';
+        setTaskListIsOpen(val);
+    };
+
+    const handleTaskFormModal = (val:boolean) => {
+        document.body.style.overflow = val === true ? 'hidden' : '';
+        setTaskFormIsOpen(val);
+    };
   return (
     <div>
         <div className="flex items-center gap-2">
@@ -28,19 +38,19 @@ const OngoingTasks = () => {
         
         <div className="flex flex-col gap-3">
             <Button variant="solid"
-            onClick={()=>setTaskFormIsOpen(true)}
+            onClick={()=>handleTaskFormModal(true)}
             >Nouvelle tache</Button>
             <TaskFormModal
             dialogIsOpen={taskFormIsOpen}
-            setIsOpen={setTaskFormIsOpen}
+            setIsOpen={handleTaskFormModal}
             />
             <Button variant="twoTone" 
-            onClick={()=>setTaskListIsOpen(true)}
+            onClick={()=>handleTaskListModal(true)}
             >Voir toutes les taches
             </Button>
             <TasksListModal
             dialogIsOpen={taskListIsOpen}
-            setIsOpen={setTaskListIsOpen}
+            setIsOpen={handleTaskListModal}
             />
         </div> 
     </div>

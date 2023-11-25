@@ -89,7 +89,7 @@ const ParametersModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                 <HiX size={24}/>
             </div>
         </div>
-        <div className="px-0 py-0">
+        <div className="parameters-w px-0 py-0">
             <Tabs selectedIndex={activeTab} onSelect={handleTabClick}>
                 <div className="flex flex-row h-full min-h-[600px]">
                     <TabList className="flex flex-col w-[150px] pt-7 bg-nael-blue-600">

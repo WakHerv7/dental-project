@@ -115,7 +115,7 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
         onClose={onDialogClose}
         onRequestClose={onDialogClose}
         closable={false}
-        width={1000}
+        width={'90vw'}
     >
         <div className="px-6 pb-6">
             <Button
@@ -164,7 +164,7 @@ const TasksListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
                 </div>
                 
             </div>
-            <div className="max-h-[67vh] overflow-y-auto">
+            <div className="">
                 <Table className='table-auto'>
                     <THead>
                         <Tr>

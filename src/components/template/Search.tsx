@@ -165,7 +165,7 @@ const _Search = ({ className }: { className?: string }) => {
                             Esc
                         </Button>
                     </div>
-                    <div className="py-6 px-5 max-h-[550px] overflow-y-auto">
+                    <div className="py-6 px-5">
                         {searchResult.map((result) => (
                             <div key={result.title} className="mb-6">
                                 <h6 className="mb-3">{result.title}</h6>

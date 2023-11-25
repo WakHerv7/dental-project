@@ -12,7 +12,8 @@ import {
     HiPlus
 } from 'react-icons/hi';
 import PriorityTag from '@/components/shared/PriorityTag';
-
+import { useState } from 'react';
+import PatientFormModal from './modals/patientForm';
 
 const { Tr, Th, Td, THead, TBody } = Table
 
@@ -191,6 +192,12 @@ const onDropdownClick = (e: SyntheticEvent) => {
 // *********************************************************
 
 const PatientList = () => {
+
+    const [patientFormIsOpen, setPatientFormIsOpen] = useState(false);
+    const handlePatientFormModal = (val:boolean) => {
+        document.body.style.overflow = val === true ? 'hidden' : '';
+        setPatientFormIsOpen(val);
+    };
     
     return (
         <div className="h-full w-full">
@@ -200,7 +207,7 @@ const PatientList = () => {
                     <h4>Liste des patients</h4>
                     <div className="flex items-center gap-4">
                         <Input
-                            placeholder="Rechercher une tache"
+                            placeholder="Rechercher un patient"
                             prefix={<HiOutlineSearch className="text-xs" />}
                             className='max-w-[200px]'
                         />
@@ -209,9 +216,14 @@ const PatientList = () => {
                             variant="solid"
                             size='sm'
                             icon={<HiPlus/>}
+                            onClick={()=>handlePatientFormModal(true)}
                         >
                             Nouveau patient
                         </Button>
+                        <PatientFormModal
+                        dialogIsOpen={patientFormIsOpen}
+                        setIsOpen={handlePatientFormModal}
+                        />
                     </div>
                 </div>
                 
@@ -220,7 +232,7 @@ const PatientList = () => {
                     <Table className='table-auto'>
                         <THead>
                             <Tr>
-                                <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Numero de sossier</Th>
+                                <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Numero de dossier</Th>
                                 <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Civilité</Th>
                                 <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Nom</Th>
                                 <Th className={"text-xs"} style={{paddingLeft:'0px'}}>Prenom</Th>                            

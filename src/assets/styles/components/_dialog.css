@@ -5,25 +5,25 @@
 
 @screen sm {
   .dialog {
-    @apply max-w-xl;
+    @apply max-w-[90vw];
   }
 }
 
 @screen md {
   .dialog {
-    @apply max-w-2xl;
+    @apply max-w-[90vw];
   }
 }
 
 @screen lg {
   .dialog {
-    @apply max-w-4xl;
+    @apply max-w-[90vw];
   }
 }
 
 @screen xl {
   .dialog {
-    @apply max-w-6xl;
+    @apply max-w-[90vw];
   }
 }
 
@@ -33,7 +33,7 @@
 
 .dialog-overlay {
   transition: all 0.15s ease-in-out;
-  @apply bg-opacity-60 inset-0 fixed z-30 bg-black dark:bg-opacity-80;
+  @apply bg-opacity-60 inset-0 fixed overflow-y-auto z-30 bg-black dark:bg-opacity-80;
 }
 
 .dialog-overlay-after-open {

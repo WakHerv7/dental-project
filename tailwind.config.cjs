@@ -61,6 +61,10 @@ module.exports = {
 			},
 			extend: {
 				colors: {
+					"nael-second-blue":"#0277bd",
+					"nael-second-blue-light":"#0277bd33",
+					"nael-third-blue":"#21bfa3",
+					"nael-gray":"#727272",
 					"nael-blue": {
 					  50: "#283874",
 					  100: "#283874",

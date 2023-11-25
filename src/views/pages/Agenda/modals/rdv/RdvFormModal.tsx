@@ -145,7 +145,7 @@ const RdvFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
     >
         <div className="px-6 pb-6">
             <h4 className="mb-4">Rendez-vous</h4>
-            <div className="max-h-[67vh] overflow-y-auto pr-4">
+            <div className="">
                 <div className='mb-4'>
                     <Input
                         placeholder="Rechercher un patient déjè existant"

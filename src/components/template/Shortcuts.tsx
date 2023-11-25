@@ -61,6 +61,19 @@ const _Shortcuts = ({ className }: { className?: string }) => {
     const location = useLocation();
     const specificUrl = '/app/agenda/dashboard';
 
+    const handleCallFormModal = (val:boolean) => {
+        document.body.style.overflow = val == true ? 'hidden' : '';
+        setCallFormDialogOpen(val);
+    };
+    const handleTimeSlotFormModal = (val:boolean) => {
+        document.body.style.overflow = val == true ? 'hidden' : '';
+        setTimeSlotFormDialogOpen(val);
+    };
+    const handleMemoListModal = (val:boolean) => {
+        document.body.style.overflow = val == true ? 'hidden' : '';
+        setMemoListDialogOpen(val);
+    };
+
     return (
         <>
             <div
@@ -79,7 +92,7 @@ const _Shortcuts = ({ className }: { className?: string }) => {
                         'bg-nael-lighten-600 text-nael-violet-600 font-semibold',
                         
                     )}
-                    onClick={()=>setMemoListDialogOpen(true)}
+                    onClick={()=>handleMemoListModal(true)}
                 >
                     <MemoSvg className='text-lg' />
                     <div className="">
@@ -88,29 +101,29 @@ const _Shortcuts = ({ className }: { className?: string }) => {
                 </div>
                 <MemoListModal
                 dialogIsOpen={memoListDialogOpen}
-                setIsOpen={setMemoListDialogOpen}
+                setIsOpen={handleMemoListModal}
                 />
 
                 {location.pathname === specificUrl?
                 <>
                     <Tooltip title="Fiche d'appel" className="bg-nael-lighten-600 text-nael-violet-600" placement='bottom'>
-                    <div onClick={()=>setCallFormDialogOpen(true)} className={`text-[20px] w-fit text-nael-violet-600 bg-nael-lighten-600 hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
+                    <div onClick={()=>handleCallFormModal(true)} className={`text-[20px] w-fit text-nael-violet-600 bg-nael-lighten-600 hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
                         <HiIdentification />
                     </div>
                     </Tooltip>
                     <CallFormModal
                     dialogIsOpen={callFormDialogOpen}
-                    setIsOpen={setCallFormDialogOpen}
+                    setIsOpen={handleCallFormModal}
                     />
 
                     <Tooltip title="Recherche de créneau"  className="bg-nael-lighten-600 text-nael-violet-600" placement='bottom'>
-                        <div onClick={()=>setTimeSlotFormDialogOpen(true)} className={`text-[20px] w-fit text-nael-violet-600 bg-nael-lighten-600 hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
+                        <div onClick={()=>handleTimeSlotFormModal(true)} className={`text-[20px] w-fit text-nael-violet-600 bg-nael-lighten-600 hover:bg-indigo-100 dark:text-indigo-100 dark:bg-gray-800/20 rounded-[5px] p-[10px] cursor-pointer`}>
                             <FaClock />
                         </div>
                     </Tooltip>
                     <TimeSlotFormModal
                     dialogIsOpen={timeSlotFormDialogOpen}
-                    setIsOpen={setTimeSlotFormDialogOpen}
+                    setIsOpen={handleTimeSlotFormModal}
                     />
                     
                     <Tooltip title="Ajouter un nouveau patient" className="bg-nael-lighten-600 text-nael-violet-600" placement='bottom'>

@@ -82,18 +82,15 @@ const WaitingListModal = ( {searchDialogOpen, setSearchDialogOpen}:ModalProps ) 
     const [dialogIsOpen, setIsOpen] = useState(false)
 
     const openDialog = () => {
+        document.body.style.overflow = 'hidden';
         setIsOpen(true)
     }
 
     const onDialogClose = (e: MouseEvent) => {
-        console.log('onDialogClose', e)
+        document.body.style.overflow = '';
         setIsOpen(false)
     }
 
-    const onDialogOk = (e: MouseEvent) => {
-        console.log('onDialogOk', e)
-        setIsOpen(false)
-    }
   return (
     <>
     <div
@@ -136,7 +133,7 @@ const WaitingListModal = ( {searchDialogOpen, setSearchDialogOpen}:ModalProps ) 
                 </Button>
             </div>
 
-            <div className="max-h-[67vh] overflow-y-auto px-5">
+            <div className="">
                 {patientList.map((patient, idx) => (
                     <Card key={idx} className='flex flex-col gap-4 mb-3'>
                         <div className="flex gap-3 relative mb-5">

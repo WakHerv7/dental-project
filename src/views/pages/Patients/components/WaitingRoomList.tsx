@@ -98,7 +98,7 @@ const WaitingRoomList = ({ data = [] }: WaitingRoomListProps) => {
                     </Button>
                 </div>
 
-                <div className="max-h-[77vh] overflow-y-auto">
+                <div className="">
                     {patientList.map((patient, idx) => (
                         <Card key={idx} className='flex flex-col gap-4 mb-3'>
                             <div className="flex gap-3 relative pb-5 mb-5">

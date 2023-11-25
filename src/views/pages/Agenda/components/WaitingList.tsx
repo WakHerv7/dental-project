@@ -56,6 +56,18 @@ const WaitingList = () => {
     const [rdvDetailsDialogIsOpen, setRdvDetailsDialogIsOpen] = useState(Array(scheduleData.length).fill(false));
     const [reprogramDialogIsOpen, setReprogramDialogIsOpen] = useState(Array(scheduleData.length).fill(false));
     
+    // const handleBirthdayDialogModal = (val:Array(scheduleData.length)) => {
+    //     document.body.style.overflow = val === true ? 'hidden' : '';
+    //     setBirthdayDialogIsOpen(val);
+    // };
+    // const handleRdvDetailsDialogModal = (val:boolean) => {
+    //     document.body.style.overflow = val === true ? 'hidden' : '';
+    //     setRdvDetailsDialogIsOpen(val);
+    // };
+    // const handleReprogramDialogModal = (val:boolean) => {
+    //     document.body.style.overflow = val === true ? 'hidden' : '';
+    //     setReprogramDialogIsOpen(val);
+    // };
     // *********************************************************
     const dropdownItems = [
         { key: 'a', name: 'Reprogrammer' },
@@ -95,20 +107,23 @@ const WaitingList = () => {
 
     // *********************************************************
 
-    const openBirthdayModal = (index: number) => {
+    const handleBirthdayModal = (index: number, val:boolean) => {
+        document.body.style.overflow = val ? 'hidden' : '';
         const updatedDialogIsOpen = [...birthdayDialogIsOpen];
-        updatedDialogIsOpen[index] = true;
+        updatedDialogIsOpen[index] = val;
         setBirthdayDialogIsOpen(updatedDialogIsOpen);
     };
 
-    const openRdvDetailsModal = (index: number) => {
+    const handleRdvDetailsModal = (index: number, val:boolean) => {
+        document.body.style.overflow = val ? 'hidden' : '';
         const updatedDialogIsOpen = [...rdvDetailsDialogIsOpen];
-        updatedDialogIsOpen[index] = true;
+        updatedDialogIsOpen[index] = val;
         setRdvDetailsDialogIsOpen(updatedDialogIsOpen);
     };
-    const openReprogramModal = (index: number) => {
+    const handleReprogramModal = (index: number, val:boolean) => {
+        document.body.style.overflow = val ? 'hidden' : '';
         const updatedDialogIsOpen = [...reprogramDialogIsOpen];
-        updatedDialogIsOpen[index] = true;
+        updatedDialogIsOpen[index] = val;
         setReprogramDialogIsOpen(updatedDialogIsOpen);
     };
     
@@ -163,20 +178,16 @@ const WaitingList = () => {
                         size={30}
                         src="/img/avatars/thumb-1.jpg"
                         shape="circle"
-                        onClick={()=>openBirthdayModal(index)}
+                        onClick={()=>handleBirthdayModal(index, true)}
                     />
                     <BirthdayModal
                     dialogIsOpen={birthdayDialogIsOpen[index]}
-                    setIsOpen={(isOpen) => {
-                      const updatedDialogIsOpen = [...birthdayDialogIsOpen];
-                      updatedDialogIsOpen[index] = isOpen;
-                      setBirthdayDialogIsOpen(updatedDialogIsOpen);
-                    }}
+                    setIsOpen={(isOpen) => handleBirthdayModal(index, isOpen)}
                     picture={"/img/avatars/thumb-1.jpg"}
                     username={event.eventName}
                     birthdate={"1999-10-25"}
                     />
-                    <div onClick={()=>openRdvDetailsModal(index)}>
+                    <div onClick={()=>handleRdvDetailsModal(index, true)}>
                         <h6 className="text-sm font-bold">
                             {event.eventName}
                         </h6>
@@ -184,11 +195,7 @@ const WaitingList = () => {
                     </div>
                     <RdvDetailsModal
                         dialogIsOpen={rdvDetailsDialogIsOpen[index]}
-                        setIsOpen={(isOpen) => {
-                        const updatedDialogIsOpen = [...rdvDetailsDialogIsOpen];
-                        updatedDialogIsOpen[index] = isOpen;
-                        setRdvDetailsDialogIsOpen(updatedDialogIsOpen);
-                        }}
+                        setIsOpen={(isOpen) => handleRdvDetailsModal(index, isOpen)}
                         rdvDetails={{
                             name: event.eventName,
                             email: nameToEmail(event.eventName),
@@ -243,7 +250,7 @@ const WaitingList = () => {
                             onSelect={onDropdownItemClick}
                         >
                             {dindex===0 ?
-                            <span className="text-black" onClick={()=>openReprogramModal(index)}>
+                            <span className="text-black" onClick={()=>handleReprogramModal(index, true)}>
                             {item.name}
                             </span>
                             :
@@ -256,11 +263,7 @@ const WaitingList = () => {
                 </Dropdown>
                 <ReprogramAppointmentModal
                     dialogIsOpen={reprogramDialogIsOpen[index]}
-                    setIsOpen={(isOpen) => {
-                    const updatedDialogIsOpen = [...reprogramDialogIsOpen];
-                    updatedDialogIsOpen[index] = isOpen;
-                    setReprogramDialogIsOpen(updatedDialogIsOpen);
-                    }}
+                    setIsOpen={(isOpen) => handleReprogramModal(index, isOpen)}
                 />
                 
             </div>

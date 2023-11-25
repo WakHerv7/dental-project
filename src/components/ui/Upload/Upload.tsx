@@ -22,6 +22,7 @@ export interface UploadProps extends CommonProps {
     showList?: boolean
     tip?: string | ReactNode
     uploadLimit?: number
+    name?: string
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field?: any
 }
@@ -46,6 +47,7 @@ const Upload = forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
         children,
         className,
         field,
+        name,
         ...rest
     } = props
 
@@ -208,6 +210,7 @@ const Upload = forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
                     disabled={disabled}
                     multiple={multiple}
                     accept={accept}
+                    name={name}
                     title=""
                     value=""
                     onChange={onNewFileUpload}

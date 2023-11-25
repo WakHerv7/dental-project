@@ -78,7 +78,7 @@ const CallFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
         <div className="px-6 pb-6">
             <h4 className="mb-4">Fiche d'appel</h4>
 
-            <div className="max-h-[67vh] overflow-y-auto px-5">
+            <div className="">
                 <div className="mb-2">
                     <Input
                         placeholder="Rechercher un patient déjà existant..."

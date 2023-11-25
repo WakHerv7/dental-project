@@ -113,7 +113,7 @@ const MemoListModal = ({dialogIsOpen, setIsOpen}:ModalSettings  ) => {
                 </div>
                 
             </div>
-            <div className="max-h-[67vh] overflow-y-auto">
+            <div className="">
                 <Table className='table-auto'>
                     <THead>
                         <Tr>

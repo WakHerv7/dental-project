@@ -41,6 +41,16 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
 
     const { textTheme } = useThemeClass()
 
+    const handleRdvFormModal = (val:boolean) => {
+        document.body.style.overflow = val === true ? 'hidden' : '';
+        setRdvFormIsOpen(val);
+    };
+
+    const handleRdvListModal = (val:boolean) => {
+        document.body.style.overflow = val === true ? 'hidden' : '';
+        setRdvListIsOpen(val);
+    };
+
 
     return (
         <>        
@@ -91,19 +101,19 @@ const Schedule = ({ data = [] }: ScheduleProps) => {
             
             <div className="flex flex-col gap-3">
                 <Button variant="solid" className='bg-nael-blue-600'
-                onClick={()=>setRdvFormIsOpen(true)}
+                onClick={()=>handleRdvFormModal(true)}
                 >Nouveau rendez-vous</Button>
                 <RdvFormModal
                 dialogIsOpen={rdvFormIsOpen}
-                setIsOpen={setRdvFormIsOpen}
+                setIsOpen={handleRdvFormModal}
                 />
 
                 <Button variant="twoTone" className='text-nael-violet-600 bg-nael-lighten-600'
-                onClick={()=>setRdvListIsOpen(true)}
+                onClick={()=>handleRdvListModal(true)}
                 >Voir la liste des rendez-vous</Button>
                 <RdvListModal
                 dialogIsOpen={rdvListIsOpen}
-                setIsOpen={setRdvListIsOpen}
+                setIsOpen={handleRdvListModal}
                 />
             </div>            
             
