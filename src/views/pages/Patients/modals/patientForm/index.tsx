@@ -66,13 +66,27 @@ const PatientFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
     const [executant, setExecutant] = useState<any | null>();
     const [activeTab, setActiveTab] = useState(0);
 
-    useEffect(() => {
-      console.log("isInsured: ", isInsured);
-    }, [isInsured])
+    // useEffect(() => {
+    //   console.log("isInsured: ", isInsured);
+    // }, [isInsured])
     
-    const handleTabClick = (index: number) => {
+    const handleTabClick = (move: string) => {
+        const lookupTable = {
+            'next': {
+                0: isInsured == 0 ? 3 : 1,
+                1: hasSuppInsurance == 0 ? 3 : 2,
+                2: 3
+            },
+            'prev': {
+                1: 0,
+                2: 1,
+                3: isInsured == 0 ? 0 : isInsured == 1 && hasSuppInsurance == 0 ? 1 : 2
+            }
+        };
+     
+        let index = lookupTable[move][activeTab];
         setActiveTab(index);
-    };    
+     };  
 
     const onDialogClose = (e: MouseEvent) => {
         console.log('onDialogClose', e)
@@ -130,7 +144,7 @@ const PatientFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                     }
                     <div className="flex gap-4">
                     {activeTab>0 &&
-                    <Button variant="twoTone" className="bg-transparent text-nael-second-blue border border-nael-second-blue hover:bg-nael-second-blue-light" size='md' onClick={()=>handleTabClick(!isInsured? 0 : !hasSuppInsurance? activeTab-2 : activeTab-1)}>
+                    <Button variant="twoTone" className="bg-transparent text-nael-second-blue border border-nael-second-blue hover:bg-nael-second-blue-light" size='md' onClick={()=>handleTabClick('prev')}>
                         Précédent
                     </Button>
                     }
@@ -139,7 +153,7 @@ const PatientFormModal = ({dialogIsOpen, setIsOpen}:ModalProps  ) => {
                         className="ltr:mr-2 rtl:ml-2 bg-nael-second-blue hover:bg-nael-second-blue"
                         variant="solid"
                         size='md'
-                        onClick={()=>handleTabClick(!isInsured? 3 : !hasSuppInsurance? activeTab+2 : activeTab+1)}
+                        onClick={()=>handleTabClick('next')}
                     >
                         Suivant
                     </Button>

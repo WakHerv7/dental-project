@@ -200,9 +200,9 @@ const EtatCivil = (props:EtatCivilProps) => {
         groupCitiesByCountry(cities, nationalities);
     }, [])
     useEffect(() => {
-        const villes = countries?.filter((item:any) => item.id === nationality)[0]?.villes;
+        const villes = countries?.filter((item:any) => item.id === country)[0]?.villes;
         setSelectedCities(villes);    
-    }, [nationality])
+    }, [country])
     
     function restructureData(inputData:any, dataType:string) {
         
@@ -306,7 +306,7 @@ const EtatCivil = (props:EtatCivilProps) => {
                             size="sm"
                             className=""
                             name="nationality"
-                            value={restructureData(nationalities, 'nationalite')?.filter((option:any) => option.value === nationality?.value)}
+                            value={nationality?.value}
                             onChange={(elt)=>setNationality(elt?.value)}
                         />
                     </FormItem>
@@ -332,7 +332,7 @@ const EtatCivil = (props:EtatCivilProps) => {
                             size="sm"
                             className=""
                             name="profession"
-                            value={restructureData(professions, 'jobs')?.filter((option) => option.value === job)}
+                            value={job?.value}
                             onChange={(item)=>setJob(item?.value)}
                         />
                     </FormItem>
@@ -428,7 +428,7 @@ const EtatCivil = (props:EtatCivilProps) => {
                             size="sm"
                             className=""
                             name="living-country"
-                            value={restructureData(nationalities, 'pays')?.filter((option) => option.value === country)}
+                            value={country?.value}
                             onChange={(item)=>setCountry(item?.value)}
                         />
                     </FormItem>
@@ -493,7 +493,7 @@ const EtatCivil = (props:EtatCivilProps) => {
                             size="sm"
                             className=""
                             name="genre"
-                            value={selectedCities?.filter((option) => option.value === city?.value)}
+                            value={city?.value}
                             onChange={(item)=>setCity(item?.value)}
                         />
                         
